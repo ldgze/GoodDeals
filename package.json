@@ -1,0 +1,28 @@
+{
+  "type": "module",
+  "name": "gooddeals",
+  "version": "1.0.0",
+  "description": "A deal sharing platform",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Yushi Cui, Zexi Gong",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^8.52.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-react": "^7.33.2",
+    "prettier": "^3.0.3"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "mongodb": "^6.2.0",
+    "node": "^21.1.0",
+    "nodemon": "^3.0.1",
+    "react": "^18.2.0"
+  }
+}
