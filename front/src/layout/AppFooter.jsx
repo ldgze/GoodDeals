@@ -1,3 +1,3 @@
 export function AppFooter() {
-  return <footer>Made by John with ❤️</footer>;
+  return <footer>&copy; 2023 Yushi Cui & Zexi Gong</footer>;
 }
