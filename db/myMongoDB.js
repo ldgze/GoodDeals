@@ -14,19 +14,20 @@ function MyMongoDB() {
   const client = new MongoClient(uri);
 
   // function connect() {
-  //   const client = new MongoClient(uri);
   //   const db = client.db(DBName);
+  //   console.log("Connected to MongoDB");
   //   return { client, db };
   // }
 
   async function connect() {
     try {
-      await client.db(DBName).command({ serverStatus: 1 });
+      await client.db(DBName).command({ ping: 1 });
+      console.log("Already connected to MongoDB");
     } catch (error) {
+      console.log("Connecting to MongoDB");
       await client.connect();
-      console.log("Connected to MongoDB");
     }
-    return client.db(DBName);
+    return { client, db: client.db(DBName) };
   }
 
   myDB.createDeal = async function (deal) {
