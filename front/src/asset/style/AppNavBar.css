@@ -1,0 +1,50 @@
+/* CSS for AppNavBar component */
+.navbar {
+    background-color: #FFC3A0; /* Rose gold background color */
+    color: #880B0B; /* Rich text color */
+  }
+  
+  .navbar-brand {
+    color: #880B0B; /* Rich text color for the brand */
+    font-size: 24px; /* Adjust font size as needed */
+  }
+  
+  .nav-link {
+    color: #880B0B; /* Rich text color for navigation links */
+  }
+  
+  .nav-link:hover {
+    color: #D64161; /* Hover color for links (lighter rose gold) */
+  }
+  
+  .navbar-toggler-icon {
+    background-color: #880B0B; /* Rich color for the toggle icon */
+  }
+  
+  .form-control {
+    background-color: #FFD3B6; /* Slightly lighter rose gold for input background */
+    color: #880B0B; /* Rich text color for input */
+  }
+  
+  .btn-outline-success {
+    color: #880B0B; /* Rich text color for the search button */
+    border-color: #880B0B; /* Rich border color for the search button */
+  }
+  
+  .btn-outline-success:hover {
+    color: #D64161; /* Hover color for the search button (lighter rose gold) */
+    border-color: #D64161; /* Hover border color for the search button */
+  }
+  
+  /* You can adjust padding, margins, and other styles as needed */
+  
+  /* Example: Increase the spacing between links */
+  .nav-item {
+    margin-right: 20px;
+  }
+  
+  /* Example: Add some padding to the form */
+  .d-flex {
+    padding: 10px;
+  }
+  

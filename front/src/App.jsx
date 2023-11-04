@@ -2,6 +2,7 @@ import { AppNavBar } from "./layout/AppNavBar";
 import { AppFooter } from "./layout/AppFooter";
 // import { ButtonVote } from "./components/ButtonVote";
 // import { PhotosGallery } from "./components/PhotosGallery";
+import { Post } from "./components/Post";
 import { useState, useEffect } from "react";
 
 import './App.css';
@@ -29,8 +30,7 @@ export default function App() {
     <div>
       <AppNavBar />
       <h1>GoodDeals - Discover and Share Deals</h1>
-
-      
+      <Post />
       <AppFooter />
     </div>
   );
