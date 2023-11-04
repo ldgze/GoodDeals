@@ -6,56 +6,56 @@ import { useState, useEffect } from "react";
 
 import './App.css';
 
-// export default function App() {
-//   let [deals, setDeals] = useState([]);
+export default function App() {
+  let [deals, setDeals] = useState([]);
 
-//   // Fetch deals from the back end
-//   async function fetchDeals() {
-//     console.log("Fetching deals...");
-//     const response = await fetch("/api/deals");
-//     const data = await response.json();
-//     console.log("Got Data!", data);
+  // Fetch deals from the back end
+  async function fetchDeals() {
+    console.log("Fetching deals...");
+    const response = await fetch("/api/deals");
+    const data = await response.json();
+    console.log("Got Data!", data);
 
-//     setDeals(data.deals || []); // Default to an empty array if data.deals is undefined
-//   }
+    setDeals(data.deals || []); // Default to an empty array if data.deals is undefined
+  }
 
-//   useEffect(() => {
-//     fetchDeals();
-//   }, []); 
+  useEffect(() => {
+    fetchDeals();
+  }, []); 
 
-//   console.log("Render App deals=", deals);
+  console.log("Render App deals=", deals);
 
-//   return (
-//     <div>
-//       <AppNavBar />
-//       <h1>GoodDeals - Discover and Share Deals</h1>
+  return (
+    <div>
+      <AppNavBar />
+      <h1>GoodDeals - Discover and Share Deals</h1>
 
       
-//       <AppFooter />
-//     </div>
-//   );
-// }
-
-
-const App = () => {
-  return (
-    <Router>
-      <div className="app">
-        <Header />
-        <main className="main-content">
-          <Switch>
-            <Route exact path="/" component={HomePage} />
-            <Route path="/deals/:id" component={DealPage} />
-            <Route path="/category/:categoryName" component={CategoryPage} />
-            <Route path="/user/profile" component={UserProfile} />
-            <Route component={NotFoundPage} />
-          </Switch>
-        </main>
-        <Footer />
-      </div>
-    </Router>
+      <AppFooter />
+    </div>
   );
-};
+}
+
+
+// const App = () => {
+//   return (
+//     <Router>
+//       <div className="app">
+//         <Header />
+//         <main className="main-content">
+//           <Switch>
+//             <Route exact path="/" component={HomePage} />
+//             <Route path="/deals/:id" component={DealPage} />
+//             <Route path="/category/:categoryName" component={CategoryPage} />
+//             <Route path="/user/profile" component={UserProfile} />
+//             <Route component={NotFoundPage} />
+//           </Switch>
+//         </main>
+//         <Footer />
+//       </div>
+//     </Router>
+//   );
+// };
 
 
 
