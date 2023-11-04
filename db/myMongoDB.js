@@ -1,16 +1,32 @@
-import { MongoClient } from "mongodb";
+import { MongoClient, ObjectId } from "mongodb";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 function MyMongoDB() {
   const myDB = {};
-  const uri = process.env.MONGODB_URI || "mongodb://localhost:27017";
+  const uri = process.env.MONGODB_URI;
+  // || "mongodb://localhost:27017";
 
   const DBName = "deals"
   const CollectionBeauty = "beauty"
 
-  function connect() {
-    const client = new MongoClient(uri);
-    const db = client.db(DBName);
-    return { client, db };
+  const client = new MongoClient(uri);
+
+  // function connect() {
+  //   const client = new MongoClient(uri);
+  //   const db = client.db(DBName);
+  //   return { client, db };
+  // }
+
+  async function connect() {
+    try {
+      await client.db(DBName).command({ serverStatus: 1 });
+    } catch (error) {
+      await client.connect();
+      console.log("Connected to MongoDB");
+    }
+    return client.db(DBName);
   }
 
   myDB.createDeal = async function (deal) {
@@ -63,6 +79,7 @@ function MyMongoDB() {
     }
   };
 
+  myDB.connect = connect;
   return myDB;
 }
 
