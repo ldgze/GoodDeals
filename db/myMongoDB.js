@@ -9,15 +9,9 @@ function MyMongoDB() {
   // || "mongodb://localhost:27017";
 
   const DBName = "deals"
-  const CollectionBeauty = "beauty"
+  const CollName_Beauty = "beauty"
 
   const client = new MongoClient(uri);
-
-  // function connect() {
-  //   const db = client.db(DBName);
-  //   console.log("Connected to MongoDB");
-  //   return { client, db };
-  // }
 
   async function connect() {
     try {
@@ -27,58 +21,56 @@ function MyMongoDB() {
       console.log("Connecting to MongoDB");
       await client.connect();
     }
-    return { client, db: client.db(DBName) };
+    return client.db(DBName);
   }
 
-  myDB.createDeal = async function (deal) {
-    const { client, db } = connect();
-    try {
-      const result = await db.collection(CollectionBeauty).insertOne(deal);
-      return result;
-    } finally {
+  // return { client, db: client.db(DBName) };
+  
+  myDB.createDeal = async (deal) => {
+    const db = await connect();
+    return await db.collection(CollName_Beauty).insertOne(deal);
+};
+
+  myDB.getDeals = async (query = {}) => {
+    const db = await connect();
+    const dealCol = db.collection(CollName_Beauty);
+    const deals = await dealCol.find(query).toArray();
+    return deals;
+  };
+
+  myDB.getDealById = async (dealId) => {
+    const db = await connect();
+    const dealCol = db.collection(CollName_Beauty);
+    const deal = await dealCol.findOne({ _id: new ObjectId(dealId) });
+    return deal;
+  };
+
+
+  myDB.closeConnection = async () => {
+    if (client.isConnected()) {
       await client.close();
     }
   };
 
-  myDB.getDeals = async function (query = {}) {
-    const { client, db } = connect();
-    try {
-      const deals = await db.collection(CollectionBeauty).find(query).toArray();
-      return deals;
-    } finally {
-      await client.close();
-    }
-  };
+  // myDB.updateDeal = async function (id, updateData) {
+  //   const { client, db } = connect();
+  //   try {
+  //     const result = await db.collection(CollectionBeauty).updateOne({ "_id": new ObjectId(id) }, { $set: updateData });
+  //     return result;
+  //   } finally {
+  //     await client.close();
+  //   }
+  // };
 
-  myDB.getDealById = async function (id) {
-    const { client, db } = connect();
-    try {
-      const deal = await db.collection(CollectionBeauty).findOne({ "_id": new ObjectId(id) });
-      return deal;
-    } finally {
-      await client.close();
-    }
-  };
-
-  myDB.updateDeal = async function (id, updateData) {
-    const { client, db } = connect();
-    try {
-      const result = await db.collection(CollectionBeauty).updateOne({ "_id": new ObjectId(id) }, { $set: updateData });
-      return result;
-    } finally {
-      await client.close();
-    }
-  };
-
-  myDB.deleteDeal = async function (id) {
-    const { client, db } = connect();
-    try {
-      const result = await db.collection(CollectionBeauty).deleteOne({ "_id": new ObjectId(id) });
-      return result;
-    } finally {
-      await client.close();
-    }
-  };
+  // myDB.deleteDeal = async function (id) {
+  //   const { client, db } = connect();
+  //   try {
+  //     const result = await db.collection(CollectionBeauty).deleteOne({ "_id": new ObjectId(id) });
+  //     return result;
+  //   } finally {
+  //     await client.close();
+  //   }
+  // };
 
   myDB.connect = connect;
   return myDB;
