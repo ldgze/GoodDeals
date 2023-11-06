@@ -9,7 +9,7 @@ export function DisplayPage  ()  {
   useEffect(() => {
     async function fetchPosts () {
         try {
-          const response = await fetch('/api/deals/api/deals'); // Replace with your actual API endpoint
+          const response = await fetch('/api/deals'); // Replace with your actual API endpoint
           if (response.ok) {
             const data = await response.json();
             // Assuming the data is an array of posts
