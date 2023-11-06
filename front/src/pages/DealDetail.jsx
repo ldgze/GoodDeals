@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { ButtonLike } from '../components/ButtonLike';
 
 export function DealDetail() {
   const [deal, setDeal] = useState(null);
@@ -30,6 +31,7 @@ export function DealDetail() {
       <p><strong>Web Link:</strong> <a href={deal.weblink} target="_blank" rel="noopener noreferrer">{deal.weblink}</a></p>
       <p><strong>Image:</strong> <img src={deal.imagelink} alt={deal.title} /></p>
       <p><strong>Category:</strong> {deal.category}</p>
+      <ButtonLike deal = {deal}/>
     </div>
   );
 }

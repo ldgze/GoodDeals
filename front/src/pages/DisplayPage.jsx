@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 export function DisplayPage  ()  {
@@ -12,7 +13,8 @@ export function DisplayPage  ()  {
           if (response.ok) {
             const data = await response.json();
             // Assuming the data is an array of posts
-            setPosts(data);
+            setPosts(data.deals);
+            console.log(data.deals[0]);
           } else {
             // Handle error if the request is not successful
             console.error('Failed to fetch data from the backend');
@@ -55,7 +57,7 @@ export function DisplayPage  ()  {
   // Calculate the indexes for pagination
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
+  const currentPosts = sortedPosts .slice(indexOfFirstPost, indexOfLastPost);
 
   // Change page
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
@@ -64,9 +66,16 @@ export function DisplayPage  ()  {
     <div>
       <h2>Posts</h2>
       {currentPosts.map((post) => (
-        <div key={post.id}>
+        <div key={post._id}>
           <h3>{post.title}</h3>
           <p>Ranking: {post.ranking}</p>
+          <p className="post-content">{post.description}</p>
+        <div className="post-meta">
+          <p className="post-category">Category: {post.category}</p>
+        </div>
+        <Link to={`/api/deals/${post._id}`} className="btn btn-primary btn-lg">
+              detail page
+            </Link>
         </div>
       ))}
 

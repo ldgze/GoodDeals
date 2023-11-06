@@ -19,7 +19,7 @@ export function HomePage() {
             <Link to="/createdeal" className="btn btn-primary btn-lg">
               Create a Deal
             </Link>
-            {/* <DisplayPage /> */}
+            <DisplayPage />
           </div>
         </div>
       </div>

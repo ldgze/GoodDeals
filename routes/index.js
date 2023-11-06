@@ -40,20 +40,22 @@ router.get("/id", async (req, res) => {
 });
 
 
-// router.put("/api/deals/:id", async function (req, res) {
-//   try {
-//     const id = req.params.id;
-//     const updateData = req.body;
-//     const result = await myDB.updateDeal(id, updateData);
-//     if (result.modifiedCount === 1) {
-//       res.json({ message: 'Deal updated successfully' });
-//     } else {
-//       res.status(404).json({ error: 'Deal not found' });
-//     }
-//   } catch (error) {
-//     res.status(500).json({ error: error.message });
-//   }
-// });
+router.put("/id", async function (req, res) {
+  try {
+    const id = req.query.id;
+    const updateData = req.body;
+    console.log(id)
+    console.log(updateData)
+    const result = await myDB.updateDeal(id, updateData);
+    if (result.modifiedCount === 1) {
+      res.json({ message: 'Deal updated successfully' });
+    } else {
+      res.status(404).json({ error: 'Deal not found' });
+    }
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
 
 // router.delete("/api/deals/:id", async function (req, res) {
 //   try {

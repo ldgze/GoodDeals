@@ -52,15 +52,18 @@ function MyMongoDB() {
     }
   };
 
-  // myDB.updateDeal = async function (id, updateData) {
-  //   const { client, db } = connect();
-  //   try {
-  //     const result = await db.collection(CollectionBeauty).updateOne({ "_id": new ObjectId(id) }, { $set: updateData });
-  //     return result;
-  //   } finally {
-  //     await client.close();
-  //   }
-  // };
+  myDB.updateDeal = async function (id, updateData) {
+
+    const { client, db } = connect();
+
+    // try {
+      const result = await db.collection(CollectionBeauty).updateOne({ "_id": new ObjectId(id) }, { $set: updateData });
+      console.log('Updated quiz:', result);
+      return result;
+    // } finally {
+    //   await client.close();
+    // }
+  };
 
   // myDB.deleteDeal = async function (id) {
   //   const { client, db } = connect();
