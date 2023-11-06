@@ -11,7 +11,7 @@ export default function App() {
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/createdeal" element={<CreateDeal />} />
-      <Route path="/api/deals/:dealId" element={<DealDetail />} />
+      <Route path={`/api/deals/id/:dealId`} element={<DealDetail />} />
     </Routes>
   );
 }

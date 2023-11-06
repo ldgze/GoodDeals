@@ -9,13 +9,15 @@ export function DealDetail() {
 
   useEffect(() => {
     async function fetchDeal() {
-      const response = await fetch(`/api/deals/id?id=${dealId}`);
+      console.log("in detail use param")
+      console.log(dealId)
+      const response = await fetch(`/api/deals/id/${dealId}`);
       if (response.ok) {
         const data = await response.json();
         setDeal(data);
       } else {
         console.error("Deal not found");
-        history.push('/');        
+        // history.push('/');        
       }
     } 
 
@@ -25,6 +27,9 @@ export function DealDetail() {
   if (!deal) {
     return <div>Loading...</div>;
   }
+
+  // console.log("in Detail")
+  // console.log(deal)
 
   return (
     <div className="container my-5">

@@ -73,7 +73,7 @@ export function DisplayPage  ()  {
         <div className="post-meta">
           <p className="post-category">Category: {post.category}</p>
         </div>
-        <Link to={`/api/deals/${post._id}`} className="btn btn-primary btn-lg">
+        <Link to={`/api/deals/id/${post._id}`} className="btn btn-primary btn-lg">
               detail page
             </Link>
         </div>
