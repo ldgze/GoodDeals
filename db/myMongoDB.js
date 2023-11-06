@@ -54,15 +54,14 @@ function MyMongoDB() {
 
   myDB.updateDeal = async function (id, updateData) {
 
-    const { client, db } = connect();
+    const db = await connect();
+    console.log("in db")
+    console.log(id)
+    console.log(updateData)
+    const result = await db.collection(CollName_Beauty).updateOne({ "_id": new ObjectId(id) }, { $set: updateData });
+    console.log('Updated quiz:', result);
+    return result;
 
-    // try {
-      const result = await db.collection(CollectionBeauty).updateOne({ "_id": new ObjectId(id) }, { $set: updateData });
-      console.log('Updated quiz:', result);
-      return result;
-    // } finally {
-    //   await client.close();
-    // }
   };
 
   // myDB.deleteDeal = async function (id) {

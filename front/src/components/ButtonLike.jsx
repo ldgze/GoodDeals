@@ -2,11 +2,17 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 
 export function ButtonLike({ deal }) {
-  let [likes, setLikes] = useState(0);
+  const prevLikes = deal.like;
+  console.log(77777777777777777)
+  console.log(deal)
+  let [likes, setLikes] = useState(prevLikes);
 
   function onClick() {
+    console.log(22222222222222)
     setLikes(likes + 1);
     console.log(`Like=${likes}`);
+    deal.like = likes;
+    
 
     fetch(`/api/deals/id?id=${deal._id}`, {
       method: 'PUT',
