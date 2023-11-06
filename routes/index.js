@@ -27,7 +27,7 @@ router.post('/deal', async (req, res) => {
 
 router.get("/id", async (req, res) => {
   try {
-    const deal = await myDB.getDealById(req.query.id);
+    const deal = await myDB.getDealById(req.params.id);
     if (deal) {
       res.json(deal);
     } else {

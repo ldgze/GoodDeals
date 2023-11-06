@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../asset/style/CreateDeal.css';
 
 export function CreateDeal () {
@@ -10,8 +11,11 @@ export function CreateDeal () {
     category: '',
   });
 
+  const navigate = useNavigate();
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+
     const response = await fetch('/api/deals/deal', {
       method: 'POST',
       headers: {
@@ -19,9 +23,14 @@ export function CreateDeal () {
       },
       body: JSON.stringify(dealData),
     });
+
     if (response.ok) {
+      const responseData = await response.json();
       alert('Deal Created!');
-      console.log("Success:", response.json());
+      console.log("Success:", responseData);
+      const dealId = responseData._id;
+      navigate(`/deals/${dealId}`);
+
     } else {
       console.error("Error:", response.statusText);
       response.json().then(json => console.log(json)).catch(e => console.log('Error parsing JSON:', e));
