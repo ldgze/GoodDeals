@@ -43,19 +43,23 @@ export function EditDeal() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`/api/deals/id/${dealId}`, {
+      const response = await fetch(`/api/deals/${dealId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(dealData),
+        body: JSON.stringify(
+          {title: dealData.title,
+          description: dealData.description,
+          weblink: dealData.weblink,
+          imagelink: dealData.imagelink}),
       });
       
       console.log(dealData)
 
       if (response.ok) {
         alert('Deal updated successfully!');
-        navigate(`/api/deals/${dealId}`); 
+        navigate(`/api/deals/id/${dealId}`); 
       } else {
         console.error("Error updating deal");
       }
