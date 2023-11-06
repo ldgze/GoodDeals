@@ -22,7 +22,7 @@ export function ButtonLike({ deal }) {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ deal }),
+      body: JSON.stringify({ like: deal.like }),
     })
       .then((response) => {
         if (response.ok) {

@@ -55,10 +55,10 @@ function MyMongoDB() {
   myDB.updateDeal = async function (id, updateData) {
 
     const db = await connect();
-    // console.log("in db")
-    // console.log(id)
-    // console.log(updateData)
-    const result = await db.collection(CollName_Beauty).updateOne({ "_id": new ObjectId(id) }, { $set: updateData });
+    console.log("in db")
+    console.log(id)
+    console.log(updateData)
+    const result = await db.collection(CollName_Beauty).updateOne({ _id: new ObjectId(id) }, { $set: updateData });
     console.log('Updated quiz:', result);
     return result;
 
