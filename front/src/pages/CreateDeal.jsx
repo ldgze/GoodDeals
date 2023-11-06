@@ -9,6 +9,8 @@ export function CreateDeal () {
     weblink: '',
     imagelink: '',
     category: '',
+    comments: [],
+    like: 0,
   });
 
   const navigate = useNavigate();
