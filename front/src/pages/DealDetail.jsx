@@ -7,7 +7,9 @@ export function DealDetail() {
 
   useEffect(() => {
     async function fetchDeal() {
-      const response = await fetch(`/api/deals/${dealId}`);
+      console.log(11111111111111111111111)
+      console.log(dealId);
+      const response = await fetch(`/api/deals/id?id=${dealId}`);
       if (response.ok) {
         const data = await response.json();
         setDeal(data);

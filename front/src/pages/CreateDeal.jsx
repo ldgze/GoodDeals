@@ -28,8 +28,9 @@ export function CreateDeal () {
       const responseData = await response.json();
       alert('Deal Created!');
       console.log("Success:", responseData);
-      const dealId = responseData._id;
-      navigate(`/deals/${dealId}`);
+      const dealId = responseData.dealId;
+      console.log(dealId)
+      navigate(`/api/deals/${dealId}`);
 
     } else {
       console.error("Error:", response.statusText);

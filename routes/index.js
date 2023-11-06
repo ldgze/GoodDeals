@@ -3,21 +3,21 @@ const router = express.Router();
 
 import myDB from "../db/myMongoDB.js";
 
-
-// router.get("/api/deals", async function (req, res) {
-//   try {
-//     const deals = await myDB.getDeals();
-//     res.json({ deals });
-//   } catch (error) {
-//     res.status(500).json({ error: error.message });
-//   }
-// });
+// get all posts
+router.get("/api/deals", async function (req, res) {
+  try {
+    const deals = await myDB.getDeals();
+    res.json({ deals });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
 
 router.post('/deal', async (req, res) => {
   const newDeal = req.body;
   try {
-      await myDB.createDeal(newDeal);
-      res.status(201).json({ success: true });
+      const result = await myDB.createDeal(newDeal);
+      res.status(201).json({ success: true, dealId: result.insertedId });
   } catch (error) {
       console.error(error);
       res.status(500).json({ error: error.message });
@@ -27,7 +27,7 @@ router.post('/deal', async (req, res) => {
 
 router.get("/id", async (req, res) => {
   try {
-    const deal = await myDB.getDealById(req.params.id);
+    const deal = await myDB.getDealById(req.query.id);
     if (deal) {
       res.json(deal);
     } else {

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { AppNavBar } from "../layout/AppNavBar";
 import { AppFooter } from "../layout/AppFooter";
 
-import { Post } from "../components/Post";
+import { DisplayPage } from "../pages/DisplayPage";
 import { useState, useEffect } from "react";
 
 export function HomePage() {
@@ -19,6 +19,7 @@ export function HomePage() {
             <Link to="/createdeal" className="btn btn-primary btn-lg">
               Create a Deal
             </Link>
+            {/* <DisplayPage /> */}
           </div>
         </div>
       </div>
