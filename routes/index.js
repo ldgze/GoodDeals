@@ -13,7 +13,7 @@ router.get("/api/deals", async function (req, res) {
   }
 });
 
-router.post('/deal', async (req, res) => {
+router.post('/api/deals/deal', async (req, res) => {
   const newDeal = req.body;
   try {
       const result = await myDB.createDeal(newDeal);
@@ -25,7 +25,7 @@ router.post('/deal', async (req, res) => {
 });
 
 
-router.get("/id/:id", async (req, res) => {
+router.get("/api/deals/id/:id", async (req, res) => {
   try {
     console.log(1111111111111111112)
     console.log(req.params)
@@ -43,7 +43,7 @@ router.get("/id/:id", async (req, res) => {
 });
 
 
-router.put("/:id", async function (req, res) {
+router.put("/api/deals/:id", async function (req, res) {
   try {
     const id = req.params.id;
     const updateData = req.body;

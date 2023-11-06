@@ -19,7 +19,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "front", "dist")));
 
-app.use("/api/deals", indexRouter);
+app.use("/", indexRouter);
 
 myDB.connect();
 export default app;

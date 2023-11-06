@@ -22,7 +22,7 @@ export function DealDetail() {
     } 
 
     fetchDeal();
-  }, [dealId, history]);
+  }, [dealId]);
 
   if (!deal) {
     return <div>Loading...</div>;
@@ -38,13 +38,12 @@ export function DealDetail() {
         <div className="card-body">
           <h1 className="card-title">{deal.title}</h1>
           <p className="card-text">{deal.description}</p>
-          <Link to={`/edit/${dealId}`} className="btn btn-secondary mx-2">Edit</Link>
+          <Link to={`/api/deals/edit/${dealId}`} className="btn btn-secondary mx-2">Edit</Link>
           <button onClick={() => { if (window.confirm('Are you sure you want to delete this deal?')) { /* implement deletion logic */ }}} className="btn btn-danger">Delete</button>
-          <ButtonLike deal = {deal}/>
+          {/* <ButtonLike deal = {deal}/> */}
         </div>
       </div>
      </div> 
-
 
   );
 }
