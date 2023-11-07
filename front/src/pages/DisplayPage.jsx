@@ -2,20 +2,20 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import '../asset/style/DisplayPage.css';
 
-export function DisplayPage  ()  {
+export function DisplayPage  ({ category })  {
   const [posts, setPosts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(10);
-
+  
   useEffect(() => {
     async function fetchPosts () {
         try {
-          const response = await fetch('/api/deals'); // Replace with your actual API endpoint
+                const response = await fetch(`/api/deals${category}`); 
           if (response.ok) {
             const data = await response.json();
             // Assuming the data is an array of posts
-            setPosts(data.deals);
-            console.log(data.deals[0]);
+            setPosts(data);
+            console.log(data[0]);
           } else {
             // Handle error if the request is not successful
             console.error('Failed to fetch data from the backend');
@@ -29,7 +29,7 @@ export function DisplayPage  ()  {
   }, []);
 
   // Sort the fetched posts by ranking in descending order
-  const sortedPosts = posts.sort((a, b) => b.like - a.like);
+    const sortedPosts = posts.sort((a, b) => b.like - a.like);
 
   // Calculate the indexes for pagination
   const indexOfLastPost = currentPage * postsPerPage;
@@ -40,6 +40,12 @@ export function DisplayPage  ()  {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
+    <div>
+        <div className="row justify-content-center">
+        <Link to="/createdeal" className="btn btn-primary btn-lg">
+              Create a Deal
+            </Link>
+            </div>
     <div className="display-page">
       <h2>Posts</h2>
       {currentPosts.map((post) => (
@@ -73,6 +79,7 @@ export function DisplayPage  ()  {
           </button>
         ))}
       </div>
+    </div>
     </div>
   );
 };
