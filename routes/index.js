@@ -86,4 +86,49 @@ router.get('/api/deals/category/:categoryName', async (req, res) => {
 });
 
 
+router.post('/api/deals/id/:dealId/comments', async (req, res) => {
+  try {
+    const { dealId } = req.params;
+    const comment = { ...req.body, dealId };
+    const result = await myDB.createComment(comment);
+    res.status(201).json(result);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+
+router.get('/api/deals/id/:dealId/comments', async (req, res) => {
+  try {
+    const { dealId } = req.params;
+    const comments = await myDB.getCommentsByDealId(dealId);
+    res.json(comments);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+
+router.delete('/api/deals/comments/:commentId', async (req, res) => {
+  try {
+    const { commentId } = req.params;
+    const result = await myDB.deleteComment(new ObjectId(commentId));
+    if (result.deletedCount === 0) {
+      return res.status(404).json({ error: "Comment not found" });
+    }
+    res.json({ message: "Comment deleted successfully" });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+
+
+
+
+
+
+
+
+
 export default router;

@@ -62,7 +62,6 @@ function MyMongoDB() {
     return deal;
   };
 
-
   myDB.updateDeal = async function (id, updateData) {
 
     const db = await connect();
@@ -83,10 +82,24 @@ function MyMongoDB() {
 
   myDB.getDealsByCategory = async (category) => {
     const db = await connect();
-    const deals = await db.collection('deals').find({ category }).toArray();
+    const deals = await db.collection(CollName_Beauty).find({ category }).toArray();
     return deals;
   };
 
+  myDB.createComment = async (comment) => {
+    const db = await connect();
+    return await db.collection(CollName_Comment).insertOne(comment);
+  };
+  
+  myDB.getCommentsByDealId = async (dealId) => {
+    const db = await connect();
+    return await db.collection(CollName_Comment).find({ dealId }).toArray();
+  };
+  
+  myDB.deleteComment = async (commentId) => {
+    const db = await connect();
+    return await db.collection(CollName_Comment).deleteOne({ _id: new ObjectId(commentId) });
+  };
 
   myDB.closeConnection = async () => {
     if (client.isConnected()) {
