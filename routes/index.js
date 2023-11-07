@@ -74,4 +74,16 @@ router.delete("/api/deals/id/:id", async function (req, res) {
   }
 });
 
+
+router.get('/api/deals/category/:categoryName', async (req, res) => {
+  try {
+    const category = req.params.categoryName;
+    const deals = await myDB.getDealsByCategory(category);
+    res.json(deals);
+  } catch (error) {
+    res.status(500).send('Server error');
+  }
+});
+
+
 export default router;

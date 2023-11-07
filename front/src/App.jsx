@@ -14,6 +14,9 @@ export default function App() {
       <Route path="/createdeal" element={<CreateDeal />} />
       <Route path={`/api/deals/id/:dealId`} element={<DealDetail />} />
       <Route path={`/api/deals/edit/id/:dealId`} element={<EditDeal />} />
+      {/* <Route path="/category/beauty" component={CategoryPage} />
+      <Route path="/category/grocery" component={CategoryPage} />
+      <Route path="/category/fashion" component={CategoryPage} /> */}
     </Routes>
   );
 }

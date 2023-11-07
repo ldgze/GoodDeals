@@ -6,10 +6,13 @@ dotenv.config();
 function MyMongoDB() {
   const myDB = {};
   const uri = process.env.MONGODB_URI;
-  // || "mongodb://localhost:27017";
 
   const DBName = "deals"
   const CollName_Beauty = "beauty"
+  const CollName_Comment = "comment"
+  // const CollName_Grocery = "grocery"
+  // const CollName_Fashion = "fashion"
+  // const CollName_Electronics = "electronics"
 
   const client = new MongoClient(uri);
 
@@ -24,7 +27,21 @@ function MyMongoDB() {
     return client.db(DBName);
   }
 
-  // return { client, db: client.db(DBName) };
+  // const getCollection = (category) => {
+  //   switch (category.toLowerCase()) {
+  //     case 'beauty':
+  //       return CollName_Beauty;
+  //     case 'grocery':
+  //       return CollName_Grocery;
+  //     case 'fashion':
+  //       return CollName_Fashion;
+  //     case 'electronics':
+  //       return CollName_Electronics;
+  //     default:
+  //       throw new Error(`No collection found for category: ${category}`);
+  //   }
+  // };
+
   
   myDB.createDeal = async (deal) => {
     const db = await connect();
@@ -62,6 +79,12 @@ function MyMongoDB() {
     const dealCol = db.collection(CollName_Beauty);
     const deal = await dealCol.deleteOne({ _id: new ObjectId(id) });
     return deal;
+  };
+
+  myDB.getDealsByCategory = async (category) => {
+    const db = await connect();
+    const deals = await db.collection('deals').find({ category }).toArray();
+    return deals;
   };
 
 

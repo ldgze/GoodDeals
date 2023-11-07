@@ -8,7 +8,7 @@ export function AppNavBar() {
         <li><a href="#">Grocery</a></li>
         <li><a href="#">Beauty</a></li>
         <li><a href="#">Fashion</a></li>
-        <li><a href="#">Electronic</a></li>
+        <li><a href="#">Electronics</a></li>
         <li>
             <div class="search-box">
             <input type="search"

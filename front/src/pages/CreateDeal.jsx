@@ -107,7 +107,7 @@ export function CreateDeal () {
                 className="form-control"
               >
                 <option value="">Select Category</option>
-                <option value="groceries">Groceries</option>
+                <option value="grocery">Grocery</option>
                 <option value="beauty">Beauty</option>
                 <option value="fashion">Fashion</option>
                 <option value="electronics">Electronics</option>
