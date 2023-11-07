@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import '../asset/style/DisplayPage.css';
 
 export function DisplayPage  ()  {
   const [posts, setPosts] = useState([]);
@@ -25,34 +26,10 @@ export function DisplayPage  ()  {
       };
   
       fetchPosts();
-    // Fetch or load your posts data from an API or a source
-    // For demonstration purposes, let's assume you have an array of posts
-    // const postsData = [
-    //   { id: 1, title: 'Post 1', ranking: 5 },
-    //   { id: 2, title: 'Post 2', ranking: 8 },
-    //   { id: 3, title: 'Post 2', ranking: 8 },
-    //   { id: 4, title: 'Post 2', ranking: 6 },
-    //   { id: 5, title: 'Post 2', ranking: 7 },
-    //   { id: 6, title: 'Post 2', ranking: 82 },
-    //   { id: 7, title: 'Post 2', ranking: 85 },
-    //   { id: 8, title: 'Post 2', ranking: 3 },
-    //   { id: 9, title: 'Post 2', ranking: 58 },
-    //   { id: 10, title: 'Post 2', ranking: 5 },
-    //   { id: 11, title: 'Post 2', ranking:43 },
-    //   { id: 12, title: 'Post 2', ranking: 2 },
-    //   { id: 13, title: 'Post 2', ranking: 5 },
-    //   { id: 14, title: 'Post 2', ranking: 1 },
-    //   { id: 15, title: 'Post 2', ranking:3 },
-    //   { id: 16, title: 'Post 2', ranking: 5 },
-    //   { id: 17, title: 'Post 2', ranking: 6 },
-    //   { id: 18, title: 'Post 2', ranking: 7 },
-    //   // Add more posts here
-    // ];
-    // setPosts(postsData);
   }, []);
 
   // Sort the fetched posts by ranking in descending order
-  const sortedPosts = posts.sort((a, b) => b.ranking - a.ranking);
+  const sortedPosts = posts.sort((a, b) => b.like - a.like);
 
   // Calculate the indexes for pagination
   const indexOfLastPost = currentPage * postsPerPage;
@@ -63,12 +40,19 @@ export function DisplayPage  ()  {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
-    <div>
+    <div className="display-page">
       <h2>Posts</h2>
       {currentPosts.map((post) => (
-        <div key={post._id}>
+        <div classname="container">
+        
+        <div className="post-card" key={post._id}>
+        <div className="row justify-content-center">
+            <div className="col-md-4">
+            <img src={post.imagelink} alt={post.title} className="post-card-img"/>
+            </div>
+            <div className="col-md-8 text-center">
           <h3>{post.title}</h3>
-          <p>Ranking: {post.ranking}</p>
+          <p>Like: {post.like}</p>
           <p className="post-content">{post.description}</p>
         <div className="post-meta">
           <p className="post-category">Category: {post.category}</p>
@@ -77,9 +61,12 @@ export function DisplayPage  ()  {
               detail page
             </Link>
         </div>
+        </div>
+        </div>
+        </div>
       ))}
 
-      <div>
+      <div className="pagination">
         {Array.from({ length: Math.ceil(posts.length / postsPerPage) }).map((_, index) => (
           <button key={index} onClick={() => paginate(index + 1)}>
             {index + 1}

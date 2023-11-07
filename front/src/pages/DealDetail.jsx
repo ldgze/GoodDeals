@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { ButtonLike } from '../components/ButtonLike';
 import { useParams, Link } from 'react-router-dom';
 import { DeleteDeal } from '../pages/DeleteDeal';
+import '../asset/style/DealDetail.css';
 
 export function DealDetail() {
   const [deal, setDeal] = useState(null);
@@ -117,7 +117,7 @@ export function DealDetail() {
   return (
     <div className="container my-5">
       <div className="card">
-        <img src={deal.imagelink} alt={deal.title} className="card-img-top" style={{ maxHeight: '400px', objectFit: 'cover' }} />
+        <img src={deal.imagelink} alt={deal.title} className="card-img-top"/>
         <div className="card-body">
           <h1 className="card-title">{deal.title}</h1>
           <p className="card-text">{deal.description}</p>

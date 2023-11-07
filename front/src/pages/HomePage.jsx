@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import '../asset/style/HomePage.css';
 
 import { AppNavBar } from "../layout/AppNavBar";
 import { AppFooter } from "../layout/AppFooter";
@@ -13,8 +14,8 @@ export function HomePage() {
       <AppNavBar />
       <div className="container mt-4">
         <div className="row justify-content-center">
-          <div className="col-md-8 text-center">
-            <h1>GoodDeals - Discover and Share Deals</h1>
+          <div className="col-md-10 text-center">
+            <h1 className="page-heading">GoodDeals - Discover and Share Deals</h1>
             <p className="lead">The best place to find and share deals online.</p>
             <Link to="/createdeal" className="btn btn-primary btn-lg">
               Create a Deal

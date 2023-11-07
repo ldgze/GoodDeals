@@ -1,0 +1,65 @@
+/* Add styles for the DisplayPage component */
+
+/* Page container */
+.display-page {
+    font-family: Arial, sans-serif;
+    background-image: url('../images/wesley-tingey-ZdOW9Qd8mQo-unsplash.jpg');
+    background-size: cover;
+    /* background-color: #ffe4e1; Rose gold background color */
+    padding: 10px;
+  }
+  
+  /* Post card */
+  .post-card {
+    background-color: #ffe4e1;
+    border: 1px solid #ff1493; /* Rose gold border */
+    border-radius: 8px;
+    padding: 10px;
+    margin: 10px;
+  }
+
+  .post-card-img {
+    max-width:400px;
+  }
+  
+  .post-card h3 {
+    font-size: 24px;
+    color: #ff1493; /* Rose gold heading color */
+    margin-bottom: 5px;
+  }
+  
+  .post-card p {
+    color: #0011ff; /* Gold text color */
+  }
+  
+  .post-card .post-content {
+    color: #333; /* Dark text color */
+    margin-top: 10px;
+  }
+  
+  .post-card .post-meta {
+    color: #333; /* Dark text color */
+    margin-top: 10px;
+  }
+  
+  /* Pagination buttons */
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .pagination button {
+    background-color: #ff1493; /* Rose gold button background color */
+    color: #fff; /* White button text color */
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    margin: 0 5px;
+    cursor: pointer;
+  }
+  
+  .pagination button:hover {
+    background-color: #ff69b4; /* Lighter rose gold on hover */
+  }
+  
