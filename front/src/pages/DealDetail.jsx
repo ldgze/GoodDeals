@@ -26,14 +26,6 @@ export function DealDetail() {
       }
     } 
     fetchDeal();
-  }, [dealId]);
-  
-
-  if (!deal) {
-    return <div>Loading...</div>;
-  }
-
-  useEffect(() => {
     async function fetchComments() {
       const response = await fetch(`/api/deals/id/${dealId}/comments`);
       if (response.ok) {
@@ -43,6 +35,22 @@ export function DealDetail() {
     }
     fetchComments();
   }, [dealId]);
+  
+
+  if (!deal) {
+    return <div>Loading...</div>;
+  }
+
+  // useEffect(() => {
+  //   async function fetchComments() {
+  //     const response = await fetch(`/api/deals/id/${dealId}/comments`);
+  //     if (response.ok) {
+  //       const data = await response.json();
+  //       setComments(data);
+  //     }
+  //   }
+  //   fetchComments();
+  // }, [dealId]);
 
   // Handle new comment submission
   const submitComment = async () => {
@@ -55,9 +63,12 @@ export function DealDetail() {
     });
     
     if (response.ok) {
-      const addedComment = await response.json();
-      setComments([...comments, addedComment]);
+      const response = await fetch(`/api/deals/id/${dealId}/comments`);
+      if (response.ok){
+        const addedComment = await response.json();
+        setComments(addedComment);
       setNewComment(''); // Clear input field after submission
+      }
     }
   };
 
@@ -123,6 +134,13 @@ export function DealDetail() {
           </div>
           <section>
             <h2>Comments</h2>
+            {/* <ul>
+            {deal.comments.map((comment, index) => (
+              <li key={index}>{comment}
+              <button onClick={() => handleCommentDelete(index)} className="btn btn-danger">Delete</button>
+              </li>
+            ))}
+          </ul> */}
             {comments.map((comment, index) => (
             <div key={index}>
                 <p>{comment.text}</p>

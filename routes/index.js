@@ -112,7 +112,7 @@ router.get('/api/deals/id/:dealId/comments', async (req, res) => {
 router.delete('/api/deals/comments/:commentId', async (req, res) => {
   try {
     const { commentId } = req.params;
-    const result = await myDB.deleteComment(new ObjectId(commentId));
+    const result = await myDB.deleteComment(commentId);
     if (result.deletedCount === 0) {
       return res.status(404).json({ error: "Comment not found" });
     }
