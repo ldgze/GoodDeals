@@ -47,9 +47,8 @@ export function HomePage  ({ category })  {
         </div>
     <div className="display-page">
       <h2>Posts</h2>
-      {currentPosts.map((post) => (
-        <div classname="container">
-        
+      {currentPosts.map((post, index) => (
+        <div className="container" key={index}>
         <div className="post-card" key={post._id}>
         <div className="row justify-content-center">
             <div className="col-md-4">

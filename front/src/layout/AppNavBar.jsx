@@ -10,10 +10,10 @@ export function AppNavBar() {
         <li><a href="/category/fashion">Fashion</a></li>
         <li><a href="/category/electronics">Electronics</a></li>
         <li>
-            <div class="search-box">
+            <div className="search-box">
             <input type="search"
               placeholder="Search"/>
-                    <button class="search-button">Search</button>
+                    <button className="search-button">Search</button>
                 </div>
             </li>
     </ul>
