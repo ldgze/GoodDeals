@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { ButtonLike } from '../components/ButtonLike';
 import { useParams, Link } from 'react-router-dom';
-
+import { DeleteDeal } from '../pages/DeleteDeal';
 
 export function DealDetail() {
   const [deal, setDeal] = useState(null);
@@ -16,8 +16,7 @@ export function DealDetail() {
         const data = await response.json();
         setDeal(data);
       } else {
-        console.error("Deal not found");
-        // history.push('/');        
+        console.error("Deal not found");  
       }
     } 
 
@@ -28,9 +27,6 @@ export function DealDetail() {
     return <div>Loading...</div>;
   }
 
-  // console.log("in Detail")
-  // console.log(deal)
-
   return (
     <div className="container my-5">
       <div className="card">
@@ -38,8 +34,8 @@ export function DealDetail() {
         <div className="card-body">
           <h1 className="card-title">{deal.title}</h1>
           <p className="card-text">{deal.description}</p>
-          <Link to={`/api/deals/edit/${dealId}`} className="btn btn-secondary mx-2">Edit</Link>
-          <button onClick={() => { if (window.confirm('Are you sure you want to delete this deal?')) { /* implement deletion logic */ }}} className="btn btn-danger">Delete</button>
+          <Link to={`/api/deals/edit/id/${dealId}`} className="btn btn-secondary mx-2">Edit</Link>
+          <DeleteDeal dealId={dealId} />
           {/* <ButtonLike deal = {deal}/> */}
         </div>
       </div>
@@ -47,16 +43,3 @@ export function DealDetail() {
 
   );
 }
-
-  
-
-//   return (
-//     <div>
-//       <h1>{deal.title}</h1>
-//       <p><strong>Description:</strong> {deal.description}</p>
-//       <p><strong>Web Link:</strong> <a href={deal.weblink} target="_blank" rel="noopener noreferrer">{deal.weblink}</a></p>
-//       <p><strong>Image:</strong> <img src={deal.imagelink} alt={deal.title} /></p>
-//       <p><strong>Category:</strong> {deal.category}</p>
-//     </div>
-//   );
-// }

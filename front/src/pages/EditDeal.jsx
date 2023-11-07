@@ -43,7 +43,7 @@ export function EditDeal() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`/api/deals/${dealId}`, {
+      const response = await fetch(`/api/deals/id/${dealId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

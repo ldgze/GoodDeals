@@ -13,7 +13,7 @@ export default function App() {
       <Route path="/" element={<HomePage />} />
       <Route path="/createdeal" element={<CreateDeal />} />
       <Route path={`/api/deals/id/:dealId`} element={<DealDetail />} />
-      <Route path={`/api/deals/edit/:dealId`} element={<EditDeal />} />
+      <Route path={`/api/deals/edit/id/:dealId`} element={<EditDeal />} />
     </Routes>
   );
 }

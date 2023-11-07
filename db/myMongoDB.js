@@ -46,12 +46,6 @@ function MyMongoDB() {
   };
 
 
-  myDB.closeConnection = async () => {
-    if (client.isConnected()) {
-      await client.close();
-    }
-  };
-
   myDB.updateDeal = async function (id, updateData) {
 
     const db = await connect();
@@ -61,18 +55,21 @@ function MyMongoDB() {
     const result = await db.collection(CollName_Beauty).updateOne({ _id: new ObjectId(id) }, { $set: updateData });
     console.log('Updated quiz:', result);
     return result;
-
   };
 
-  // myDB.deleteDeal = async function (id) {
-  //   const { client, db } = connect();
-  //   try {
-  //     const result = await db.collection(CollectionBeauty).deleteOne({ "_id": new ObjectId(id) });
-  //     return result;
-  //   } finally {
-  //     await client.close();
-  //   }
-  // };
+  myDB.deleteDeal = async function (id) {
+    const db = await connect();
+    const dealCol = db.collection(CollName_Beauty);
+    const deal = await dealCol.deleteOne({ _id: new ObjectId(id) });
+    return deal;
+  };
+
+
+  myDB.closeConnection = async () => {
+    if (client.isConnected()) {
+      await client.close();
+    }
+  };
 
   myDB.connect = connect;
   return myDB;
