@@ -54,21 +54,23 @@ export function DealDetail() {
 
   // Handle new comment submission
   const submitComment = async () => {
-    const response = await fetch(`/api/deals/id/${dealId}/comments`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ text: newComment }),
-    });
-    
-    if (response.ok) {
-      const response = await fetch(`/api/deals/id/${dealId}/comments`);
-      if (response.ok){
-        const addedComment = await response.json();
-        setComments(addedComment);
-      setNewComment(''); // Clear input field after submission
-      }
+    if(newComment){
+        const response = await fetch(`/api/deals/id/${dealId}/comments`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ text: newComment }),
+        });
+        
+        if (response.ok) {
+        const response = await fetch(`/api/deals/id/${dealId}/comments`);
+        if (response.ok){
+            const addedComment = await response.json();
+            setComments(addedComment);
+        setNewComment(''); // Clear input field after submission
+        }
+        }
     }
   };
 
@@ -148,12 +150,15 @@ export function DealDetail() {
             </div>
             ))}
             <div>
-            <textarea
-                value={newComment}
-                onChange={(e) => setNewComment(e.target.value)}
-                placeholder="Write your comment here"
-            />
-            <button onClick={submitComment}>Submit Comment</button>
+                <form>
+                    <textarea
+                    value={newComment}
+                    onChange={(e) => setNewComment(e.target.value)}
+                    placeholder="Write your comment here"
+                    required
+                />
+                <button onClick={submitComment}>Submit Comment</button>
+                </form>
             </div>
           </section>
         </div>
