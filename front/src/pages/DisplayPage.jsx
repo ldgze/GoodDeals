@@ -67,13 +67,14 @@ export function DisplayPage  ({ category })  {
         </div>
       ))}
 
-      <div className="pagination">
-        {Array.from({ length: Math.ceil(posts.length / postsPerPage) }).map((_, index) => (
-          <button key={index} onClick={() => paginate(index + 1)}>
-            {index + 1}
+        <div className="pagination">
+          <button onClick={() => paginate(currentPage - 1)} disabled={currentPage === 1}>
+            Previous Page
           </button>
-        ))}
-      </div>
+          <button onClick={() => paginate(currentPage + 1)} disabled={currentPage === Math.ceil(posts.length / postsPerPage)}>
+            Next Page
+          </button>
+        </div>
     </div>
     </div>
   );
