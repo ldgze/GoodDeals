@@ -20,6 +20,7 @@ Link to GoodDeals Web Application: ()
 - **Delete Comment:** Users have the option to remove their comments
 - **Like:** Users can show appreciation for a deal or a comment by liking it
 - **Deals Ranking:** A dynamic ranking system that ranks deals based on user likes
+- **Deals Display:** Deals are organized and displayed on their respective category pages
 
 
 ## Screenshot
@@ -29,12 +30,12 @@ Link to GoodDeals Web Application: ()
 
 **Front End**
 
+- React
 - HTML5
 - CSS3
-- React
 - ES6+
 - Bootstrap5
-- Vanilla JavaScript
+- JavaScript XML
 
 **Backend**
 
