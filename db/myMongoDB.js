@@ -51,12 +51,65 @@ function MyMongoDB() {
     return result;
   };
 
+  // myDB.deleteDeal = async function (id) {
+  //   const db = await connect();
+  //   const dealCol = db.collection(CollName_Deal);
+  //   const deal = await dealCol.deleteOne({ _id: new ObjectId(id) });
+  //   return deal;
+  // };
+
+  // myDB.deleteDeal = async function (id) {
+  //   const db = await connect();
+  
+  //   try {
+  //     // Delete the deal
+  //     const dealResult = await db.collection(CollName_Deal).deleteOne({ _id: new ObjectId(id) });
+  
+  //     // If the deal was deleted, delete related comments
+  //     let commentsResult = null;
+  //     if (dealResult.deletedCount === 1) {
+  //       commentsResult = await db.collection(CollName_Comment).deleteMany({ dealId: new ObjectId(id) });
+  //     }
+  
+  //     // Return both results
+  //     return {
+  //       dealResult,
+  //       commentsResult,
+  //     };
+  //   } catch (error) {
+  //     console.error("Error deleting deal and/or related comments:", error);
+  //     throw error; // Rethrow so this can be handled by the caller
+  //   }
+  // };
+  
+
   myDB.deleteDeal = async function (id) {
     const db = await connect();
-    const dealCol = db.collection(CollName_Deal);
-    const deal = await dealCol.deleteOne({ _id: new ObjectId(id) });
-    return deal;
+    const session = client.startSession();
+  
+    let deleteResult = {
+      dealResult: null,
+      commentsResult: null,
+    };
+  
+    try {
+      await session.withTransaction(async () => {
+        deleteResult.dealResult = await db.collection(CollName_Deal).deleteOne({ _id: new ObjectId(id) }, { session });
+
+        if (deleteResult.dealResult.deletedCount === 1) {
+          deleteResult.commentsResult = await db.collection(CollName_Comment).deleteMany({ dealId: id }, { session });
+        }
+      });
+    } catch (error) {
+      console.error("Error occurred during transaction, it will be aborted:", error);
+      throw error; // Rethrow so this can be handled by the caller
+    } finally {
+      await session.endSession(); // End the session
+    }
+    return deleteResult;
   };
+
+
 
   myDB.getDealsByCategory = async (category) => {
     const db = await connect();
