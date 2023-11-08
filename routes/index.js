@@ -59,7 +59,7 @@ router.delete("/api/deals/id/:id", async function (req, res) {
   try {
     const id = req.params.id;
     const result = await myDB.deleteDeal(id);
-    if (result.deletedCount === 1) {
+    if (result.dealResult.deletedCount === 1) {
       res.json({ message: 'Deal deleted successfully' });
     } else {
       res.status(404).json({ error: 'Deal not found' });
