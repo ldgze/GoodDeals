@@ -21,5 +21,9 @@ app.use(express.static(path.join(__dirname, "front", "dist")));
 
 app.use("/", indexRouter);
 
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname ,"front/dist", 'index.html'));
+  });
+
 myDB.connect();
 export default app;

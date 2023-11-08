@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { DeleteDeal } from '../pages/DeleteDeal';
-import { CommentList } from '../pages/CommentList';
+
 import '../asset/style/DealDetail.css';
 
 export function DealDetail() {
@@ -19,6 +19,7 @@ export function DealDetail() {
       const response = await fetch(`/api/deals/id/${dealId}`);
       if (response.ok) {
         const data = await response.json();
+        console.log(data);
         setDeal(data);
       } else {
         console.error("Deal not found");  
@@ -137,7 +138,7 @@ export function DealDetail() {
         <div className="card-body">
           <h1 className="card-title">{deal.title}</h1>
           <p className="card-text">{deal.description}</p>
-          <Link to={`/api/deals/edit/id/${dealId}`} className="btn btn-secondary mx-2">Edit</Link>
+          <Link to={`/deals/edit/id/${dealId}`} className="btn btn-secondary mx-2">Edit</Link>
           <DeleteDeal dealId={dealId} />
           <div>
             <button onClick={handleLike} disabled={liked} className="btn btn-success mx-2">

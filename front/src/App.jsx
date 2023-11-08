@@ -26,8 +26,8 @@ export default function App() {
     <Routes>
       <Route path="/" element={<HomePage category="/"/>} />
       <Route path="/createdeal" element={<CreateDeal />} />
-      <Route path={`/api/deals/id/:dealId`} element={<DealDetail />} />
-      <Route path={`/api/deals/edit/id/:dealId`} element={<EditDeal />} />
+      <Route path={`/deals/id/:dealId`} element={<DealDetail />} />
+      <Route path={`/deals/edit/id/:dealId`} element={<EditDeal />} />
       <Route path="/category/beauty" element={<DisplayPage category="/category/beauty"/>} />
       <Route path="/category/groceries" element={<DisplayPage category="/category/groceries"/>} />
       <Route path="/category/fashion" element={<DisplayPage category="/category/fashion"/>} />
