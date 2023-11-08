@@ -58,7 +58,7 @@ export function EditDeal() {
 
       if (response.ok) {
         alert('Deal updated successfully!');
-        navigate(`/api/deals/id/${dealId}`); 
+        navigate(`/deals/id/${dealId}`); 
       } else {
         console.error("Error updating deal");
       }

@@ -31,7 +31,7 @@ export function CreateDeal () {
       alert('Deal Created!');
       console.log("Success:", responseData);
       const dealId = responseData.dealId;
-      navigate(`/api/deals/id/${dealId}`);
+      navigate(`/deals/id/${dealId}`);
 
     } else {
       console.error("Error:", response.statusText);
