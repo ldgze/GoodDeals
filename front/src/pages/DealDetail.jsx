@@ -8,7 +8,6 @@ export function DealDetail() {
   const [deal, setDeal] = useState(null);
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState('');
-
   const [liked, setLiked] = useState(false);
   const [likes, setLikes] = useState(0);
   const { dealId } = useParams();
@@ -40,7 +39,6 @@ export function DealDetail() {
   }
 
 
-  // Handle new comment submission
   const submitComment = async () => {
     if (newComment){
       try{
@@ -59,7 +57,7 @@ export function DealDetail() {
             setComments(updatedData);
           }
   
-          setNewComment(''); // Clear input field after submission
+          setNewComment('');
         }
       }
       catch (error) {
@@ -68,7 +66,6 @@ export function DealDetail() {
     }
   };
 
-  // Handle delete comment
   const deleteComment = async (commentId) => {
     const confirmed = window.confirm('Are you sure you want to delete this comment?');
     if (confirmed) {
@@ -77,7 +74,6 @@ export function DealDetail() {
       });
       
       if (response.ok) {
-        // Update the comments state to remove the deleted comment
         setComments(comments.filter(comment => comment._id !== commentId));
       }
     }
@@ -86,7 +82,7 @@ export function DealDetail() {
   const handleLike = async () => {
     if (!liked) {
       const updatedDeal = { ...deal };
-      updatedDeal.like += 1; // Increment the like count
+      updatedDeal.like += 1;
 
       try {
         const response = await fetch(`/api/deals/id/${dealId}`, {
@@ -100,8 +96,8 @@ export function DealDetail() {
         if (response.ok) {
           alert('Deal liked successfully!');
           setDeal(updatedDeal);
-          setLiked(true); // Mark as liked
-          setLikes(updatedDeal.like); // Update like count
+          setLiked(true);
+          setLikes(updatedDeal.like); 
         } else {
           console.error("Error updating deal");
         }

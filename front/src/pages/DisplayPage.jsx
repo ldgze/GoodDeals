@@ -11,10 +11,9 @@ export function DisplayPage  ({ category })  {
   useEffect(() => {
     async function fetchPosts () {
         try {
-                const response = await fetch(`/api/deals${category}`); 
+            const response = await fetch(`/api/deals${category}`); 
           if (response.ok) {
             const data = await response.json();
-            // Assuming the data is an array of posts
             setPosts(data);
           } else {
             console.error('Failed to fetch data from the backend');
@@ -27,15 +26,13 @@ export function DisplayPage  ({ category })  {
       fetchPosts();
   }, []);
 
-  // Sort 
-    const sortedPosts = posts.sort((a, b) => b.like - a.like);
 
-  // Calculate the indexes for pagination
+  const sortedPosts = posts.sort((a, b) => b.like - a.like);
+
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = sortedPosts .slice(indexOfFirstPost, indexOfLastPost);
 
-  // Change page
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (

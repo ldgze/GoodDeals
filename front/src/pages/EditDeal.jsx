@@ -8,7 +8,6 @@ export function EditDeal() {
     weblink: '',
     imagelink: '',
     category: '',
-    comments: [],
     like: 0,
   });
   const { dealId } = useParams();
@@ -52,7 +51,8 @@ export function EditDeal() {
           {title: dealData.title,
           description: dealData.description,
           weblink: dealData.weblink,
-          imagelink: dealData.imagelink}),
+          imagelink: dealData.imagelink,
+          category: dealData.category}),
       });
       
 

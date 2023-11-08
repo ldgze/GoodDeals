@@ -14,7 +14,7 @@ export function DeleteDeal ({ dealId }) {
 
         if (response.ok) {
           alert('Deal deleted successfully');
-          navigate('/'); // Redirect to home page
+          navigate('/');
         } else {
           alert('Failed to delete the deal');
         }

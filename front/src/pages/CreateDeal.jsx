@@ -9,7 +9,6 @@ export function CreateDeal () {
     weblink: '',
     imagelink: '',
     category: '',
-    comments: [],
     like: 0,
   });
 
