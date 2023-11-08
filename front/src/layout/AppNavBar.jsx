@@ -20,3 +20,5 @@ export function AppNavBar() {
 </nav>
   );
 }
+
+AppNavBar.propTypes = {};

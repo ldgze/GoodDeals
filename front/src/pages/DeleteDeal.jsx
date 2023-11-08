@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 export function DeleteDeal ({ dealId }) {
   const navigate = useNavigate();
@@ -30,3 +31,6 @@ export function DeleteDeal ({ dealId }) {
   );
 };
 
+DeleteDeal.propTypes = {
+    dealId: PropTypes.string.isRequired,
+};

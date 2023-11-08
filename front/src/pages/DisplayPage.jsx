@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import '../asset/style/DisplayPage.css';
+import PropTypes from 'prop-types';
 
 export function DisplayPage  ({ category })  {
   const [posts, setPosts] = useState([]);
@@ -81,4 +82,6 @@ export function DisplayPage  ({ category })  {
   );
 };
 
-
+DisplayPage.propTypes = {
+  category: PropTypes.string.isRequired,
+};

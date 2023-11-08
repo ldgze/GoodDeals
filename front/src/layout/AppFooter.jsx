@@ -7,3 +7,5 @@ export function AppFooter() {
     </footer>
   );
 }
+
+AppFooter.propTypes = {};
