@@ -27,9 +27,6 @@ router.post('/api/deals/deal', async (req, res) => {
 
 router.get("/api/deals/id/:id", async (req, res) => {
   try {
-    console.log(1111111111111111112)
-    console.log(req.params)
-    console.log(req.params.id)
     const deal = await myDB.getDealById(req.params.id);
     if (deal) {
       res.json(deal);
@@ -47,8 +44,6 @@ router.put("/api/deals/id/:id", async function (req, res) {
   try {
     const id = req.params.id;
     const updateData = req.body;
-    // console.log(id)
-    console.log(updateData)
     const result = await myDB.updateDeal(id, updateData);
     if (result.modifiedCount === 1) {
       res.json({ message: 'Deal updated successfully' });

@@ -15,11 +15,9 @@ export function DealDetail() {
 
   useEffect(() => {
     async function fetchDeal() {
-      console.log("in detail use param")
       const response = await fetch(`/api/deals/id/${dealId}`);
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
         setDeal(data);
       } else {
         console.error("Deal not found");  
@@ -41,16 +39,6 @@ export function DealDetail() {
     return <div>Loading...</div>;
   }
 
-  // useEffect(() => {
-  //   async function fetchComments() {
-  //     const response = await fetch(`/api/deals/id/${dealId}/comments`);
-  //     if (response.ok) {
-  //       const data = await response.json();
-  //       setComments(data);
-  //     }
-  //   }
-  //   fetchComments();
-  // }, [dealId]);
 
   // Handle new comment submission
   const submitComment = async () => {
@@ -64,15 +52,7 @@ export function DealDetail() {
         body: JSON.stringify({ text: newComment }),
         });
         
-        // if (response.ok) {
-        // // const response = await fetch(`/api/deals/id/${dealId}/comments`);
-        // // if (response.ok){
-        // //     const addedComment = await response.json();
-        // setComments([...comments, newComment]);
-        // setNewComment(''); // Clear input field after submission
-        // }
         if (response.ok) {
-          // Comment added successfully, so fetch the updated comments from the server
           const updatedResponse = await fetch(`/api/deals/id/${dealId}/comments`);
           if (updatedResponse.ok) {
             const updatedData = await updatedResponse.json();
@@ -138,32 +118,23 @@ export function DealDetail() {
         <div className="card-body">
           <h1 className="card-title">{deal.title}</h1>
           <p className="card-text">{deal.description}</p>
-          <Link to={`/deals/edit/id/${dealId}`} className="btn btn-secondary mx-2">Edit</Link>
-          <DeleteDeal dealId={dealId} />
-          <div>
+
+          <div className="card-btn">
             <button onClick={handleLike} disabled={liked} className="btn btn-success mx-2">
             Like ({deal.like})
             </button>
-            <output>
-                {deal.title} has {deal.like} likes
-            </output>
+            <Link to={`/deals/edit/id/${dealId}`} className="btn btn-secondary mx-2">Edit</Link>
+          <DeleteDeal dealId={dealId} />
           </div>
-          <section>
+          <section className="comment-section">
             <h2>Comments</h2>
-            {/* <ul>
-            {deal.comments.map((comment, index) => (
-              <li key={index}>{comment}
-              <button onClick={() => handleCommentDelete(index)} className="btn btn-danger">Delete</button>
-              </li>
-            ))}
-          </ul> */}
             {comments.map((comment, index) => (
             <div key={index}>
                 <p>{comment.text}</p>
                 <button onClick={() => deleteComment(comment._id)}>Delete Comment</button>
             </div>
             ))}
-            <div>
+            <div className="comment-form">
                 <form>
                     <textarea
                     value={newComment}

@@ -55,7 +55,6 @@ export function EditDeal() {
           imagelink: dealData.imagelink}),
       });
       
-      console.log(dealData)
 
       if (response.ok) {
         alert('Deal updated successfully!');

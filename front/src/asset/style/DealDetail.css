@@ -8,7 +8,7 @@
   
   /* Card styles */
   .card {
-    background-color: #e5c8f9; /* Gold card background color */
+    background-color: #ffdffa; /* Gold card background color */
     border: 1px solid #ff1493; /* Rose gold border */
     border-radius: 10px;
     padding: 30px;
@@ -64,7 +64,25 @@
   .card-body button:hover {
     background-color: #ff69b4; /* Lighter rose gold on hover */
   }
+
+  .comment-section{
+    align-items: flex-start;
+    width:100%;
+    margin-top: 20px;
+    padding: 20px;
+    border:3px solid #9803fb;
+    background-color: #f3c9ec;
+  }
   
+  .comment-section button {
+    padding: 10px 20px; /* Adjust padding as needed */
+    background-color: #60bee7; /* Change the button background color */
+    color: #fff; /* Set text color to white */
+    border: none; /* Remove the button border */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Add a smooth background color transition */
+  }
+
   /* Comment input styles */
   .form-control {
     background-color: #f4f192; /* Gold input background color */
@@ -108,4 +126,43 @@
   .btn-danger:hover {
     background-color: #ff69b4; /* Lighter rose gold on hover */
   }
+
+  /* CSS for the comment form container */
+.comment-form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  padding-top: 20px;
+}
+
+/* CSS for the textarea */
+.comment-form textarea {
+  flex: 10; /* Take up available space */
+  height: 100px; /* Set the desired height for the textarea */
+  padding: 10px; /* Add some padding for better readability */
+  resize: horizontal; /* Allow vertical resizing of the textarea */
+  width: 100%;
+}
+
+/* CSS for the submit button */
+.comment-form button {
+  margin-top: 10px; /* Add some spacing between textarea and button */
+  padding: 10px 20px; /* Adjust padding as needed */
+  background-color: #ff1493; /* Change the button background color */
+  color: #fff; /* Set text color to white */
+  border: none; /* Remove the button border */
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Add a smooth background color transition */
+}
+
+/* Style the button on hover */
+.comment-form button:hover {
+  background-color: #0056A3; /* Change the background color on hover */
+}
+@media (max-width: 768px) {
+  .comment-form textarea {
+    height: 80px; /* Adjust the height for smaller screens */
+  }
+}
+
   

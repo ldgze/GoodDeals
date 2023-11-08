@@ -15,9 +15,7 @@ export function DisplayPage  ({ category })  {
             const data = await response.json();
             // Assuming the data is an array of posts
             setPosts(data);
-            console.log(data[0]);
           } else {
-            // Handle error if the request is not successful
             console.error('Failed to fetch data from the backend');
           }
         } catch (error) {
@@ -28,7 +26,7 @@ export function DisplayPage  ({ category })  {
       fetchPosts();
   }, []);
 
-  // Sort the fetched posts by ranking in descending order
+  // Sort 
     const sortedPosts = posts.sort((a, b) => b.like - a.like);
 
   // Calculate the indexes for pagination
@@ -62,7 +60,7 @@ export function DisplayPage  ({ category })  {
         <div className="post-meta">
           <p className="post-category">Category: {post.category}</p>
         </div>
-        <Link to={`/api/deals/id/${post._id}`} className="btn btn-primary btn-lg">
+        <Link to={`/deals/id/${post._id}`} className="btn btn-primary btn-lg">
               detail page
             </Link>
         </div>

@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import '../asset/style/DisplayPage.css';
 
-export function HomePage  ({ category })  {
+export function HomePage  ()  {
   const [posts, setPosts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(10);
@@ -13,10 +13,8 @@ export function HomePage  ({ category })  {
                 const response = await fetch(`/api/deals`); 
           if (response.ok) {
             const data = await response.json();
-            // Assuming the data is an array of posts
             setPosts(data.deals);
           } else {
-            // Handle error if the request is not successful
             console.error('Failed to fetch data from the backend');
           }
         } catch (error) {
@@ -27,15 +25,12 @@ export function HomePage  ({ category })  {
       fetchPosts();
   }, []);
 
-  // Sort the fetched posts by ranking in descending order
     const sortedPosts = posts.sort((a, b) => b.like - a.like);
 
-  // Calculate the indexes for pagination
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = sortedPosts .slice(indexOfFirstPost, indexOfLastPost);
 
-  // Change page
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
