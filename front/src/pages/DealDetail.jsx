@@ -16,7 +16,6 @@ export function DealDetail() {
   useEffect(() => {
     async function fetchDeal() {
       console.log("in detail use param")
-      console.log(dealId)
       const response = await fetch(`/api/deals/id/${dealId}`);
       if (response.ok) {
         const data = await response.json();
@@ -54,7 +53,8 @@ export function DealDetail() {
 
   // Handle new comment submission
   const submitComment = async () => {
-    if(newComment){
+    if (newComment){
+      try{
         const response = await fetch(`/api/deals/id/${dealId}/comments`, {
         method: 'POST',
         headers: {
@@ -63,14 +63,27 @@ export function DealDetail() {
         body: JSON.stringify({ text: newComment }),
         });
         
+        // if (response.ok) {
+        // // const response = await fetch(`/api/deals/id/${dealId}/comments`);
+        // // if (response.ok){
+        // //     const addedComment = await response.json();
+        // setComments([...comments, newComment]);
+        // setNewComment(''); // Clear input field after submission
+        // }
         if (response.ok) {
-        const response = await fetch(`/api/deals/id/${dealId}/comments`);
-        if (response.ok){
-            const addedComment = await response.json();
-            setComments(addedComment);
-        setNewComment(''); // Clear input field after submission
+          // Comment added successfully, so fetch the updated comments from the server
+          const updatedResponse = await fetch(`/api/deals/id/${dealId}/comments`);
+          if (updatedResponse.ok) {
+            const updatedData = await updatedResponse.json();
+            setComments(updatedData);
+          }
+  
+          setNewComment(''); // Clear input field after submission
         }
-        }
+      }
+      catch (error) {
+        console.error("Error:", error);
+      }
     }
   };
 
@@ -167,89 +180,3 @@ export function DealDetail() {
   );
 }
 
-{/* <CommentList comments={comments} onDeleteComment={deleteComment} /> */}
-{/*     
-        <form onSubmit={handleCommentSubmit}>
-          <div className="form-group mb-3">
-            <label htmlFor="comment">Comment</label>
-            <textarea
-              name="comment"
-              value={newComment}
-              onChange={handleCommentChange}
-              className="form-control"
-            />
-          </div>
-          <button type="submit" className="btn btn-primary">Add comment</button>
-        </form>
-          <div>
-          <h3>Comments:</h3>
-          <ul>
-            {deal.comments.map((comment, index) => (
-              <li key={index}>{comment}
-              <button onClick={() => handleCommentDelete(index)} className="btn btn-danger">Delete</button>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div> */}
-
-
-
-
-
-//   const handleCommentChange = (e) => {
-//     setNewComment(e.target.value);
-//   };
-
-//   const handleCommentSubmit = async (e) => {
-//     e.preventDefault();
-//     try {
-//       const updatedDeal = { ...deal };
-//       updatedDeal.comments.push(newComment); // Add the new comment
-
-//       const response = await fetch(`/api/deals/id/${dealId}`, {
-//         method: 'PUT',
-//         headers: {
-//           'Content-Type': 'application/json',
-//         },
-//         body: JSON.stringify( {comments: updatedDeal.comments}),
-//       });
-
-//       if (response.ok) {
-//         alert('Comment added successfully!');
-//         setDeal(updatedDeal); // Update the local state with the new comment
-//         setNewComment(''); // Clear the input field
-//       } else {
-//         console.error("Error updating deal");
-//       }
-//     } catch (error) {
-//       console.error("Error:", error);
-//     }
-//   };
-
-
-
-//   const handleCommentDelete = (commentIndex) => {
-//     const updatedDeal = { ...deal };
-//     updatedDeal.comments.splice(commentIndex, 1);
-
-//     // Send a request to the backend to update the comments
-//     fetch(`/api/deals/id/${dealId}`, {
-//       method: 'PUT',
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//       body: JSON.stringify({comments: updatedDeal.comments}),
-//     })
-//       .then((response) => {
-//         if (response.ok) {
-//           alert('Comment deleted successfully!');
-//           setDeal(updatedDeal);
-//         } else {
-//           console.error("Error deleting comment");
-//         }
-//       })
-//       .catch((error) => {
-//         console.error("Error:", error);
-//       });
-//   };

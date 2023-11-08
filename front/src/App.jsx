@@ -28,10 +28,10 @@ export default function App() {
       <Route path="/createdeal" element={<CreateDeal />} />
       <Route path={`/api/deals/id/:dealId`} element={<DealDetail />} />
       <Route path={`/api/deals/edit/id/:dealId`} element={<EditDeal />} />
-            <Route path="/category/beauty" element={<DisplayPage category="/category/beauty"/>} />
-            <Route path="/category/grocery" element={<DisplayPage category="/category/groceries"/>} />
-            <Route path="/category/fashion" element={<DisplayPage category="/category/fashion"/>} />
-            <Route path="/category/electronics" element={<DisplayPage category="/category/electronics"/>} />
+      <Route path="/category/beauty" element={<DisplayPage category="/category/beauty"/>} />
+      <Route path="/category/groceries" element={<DisplayPage category="/category/groceries"/>} />
+      <Route path="/category/fashion" element={<DisplayPage category="/category/fashion"/>} />
+      <Route path="/category/electronics" element={<DisplayPage category="/category/electronics"/>} />
     </Routes>
     <AppFooter />
     </div>
