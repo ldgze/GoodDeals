@@ -17,8 +17,8 @@ export default function App() {
       <div className="container mt-4">
         <div className="row justify-content-center">
           <div className="col-md-10 text-center">
-            <h1 className="page-heading">GoodDeals - Discover and Share Deals</h1>
-            <p className="lead">The best place to find and share deals online.</p>
+            <h1 className="page-heading">GoodDeals</h1>
+            <p className="lead">The best place to discover and share deals online!</p>
             </div>
             </div>
             </div>

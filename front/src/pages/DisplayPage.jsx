@@ -43,7 +43,7 @@ export function DisplayPage  ({ category })  {
             </Link>
             </div>
     <div className="display-page">
-      <h2>Posts</h2>
+      <h2>Deals</h2>
       {currentPosts.map((post, index) => (
         <div className="container" key={index}>
         <div className="post-card" key={post._id}>
