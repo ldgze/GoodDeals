@@ -8,11 +8,8 @@ function MyMongoDB() {
   const uri = process.env.MONGODB_URI;
 
   const DBName = "deals"
-  const CollName_Beauty = "beauty"
+  const CollName_Deal = "dealinfo"
   const CollName_Comment = "comment"
-  // const CollName_Grocery = "grocery"
-  // const CollName_Fashion = "fashion"
-  // const CollName_Electronics = "electronics"
 
   const client = new MongoClient(uri);
 
@@ -27,37 +24,22 @@ function MyMongoDB() {
     return client.db(DBName);
   }
 
-  // const getCollection = (category) => {
-  //   switch (category.toLowerCase()) {
-  //     case 'beauty':
-  //       return CollName_Beauty;
-  //     case 'grocery':
-  //       return CollName_Grocery;
-  //     case 'fashion':
-  //       return CollName_Fashion;
-  //     case 'electronics':
-  //       return CollName_Electronics;
-  //     default:
-  //       throw new Error(`No collection found for category: ${category}`);
-  //   }
-  // };
 
-  
   myDB.createDeal = async (deal) => {
     const db = await connect();
-    return await db.collection(CollName_Beauty).insertOne(deal);
+    return await db.collection(CollName_Deal).insertOne(deal);
 };
 
   myDB.getDeals = async (query = {}) => {
     const db = await connect();
-    const dealCol = db.collection(CollName_Beauty);
+    const dealCol = db.collection(CollName_Deal);
     const deals = await dealCol.find(query).toArray();
     return deals;
   };
 
   myDB.getDealById = async (dealId) => {
     const db = await connect();
-    const dealCol = db.collection(CollName_Beauty);
+    const dealCol = db.collection(CollName_Deal);
     const deal = await dealCol.findOne({ _id: new ObjectId(dealId) });
     return deal;
   };
@@ -65,20 +47,20 @@ function MyMongoDB() {
   myDB.updateDeal = async function (id, updateData) {
 
     const db = await connect();
-    const result = await db.collection(CollName_Beauty).updateOne({ _id: new ObjectId(id) }, { $set: updateData });
+    const result = await db.collection(CollName_Deal).updateOne({ _id: new ObjectId(id) }, { $set: updateData });
     return result;
   };
 
   myDB.deleteDeal = async function (id) {
     const db = await connect();
-    const dealCol = db.collection(CollName_Beauty);
+    const dealCol = db.collection(CollName_Deal);
     const deal = await dealCol.deleteOne({ _id: new ObjectId(id) });
     return deal;
   };
 
   myDB.getDealsByCategory = async (category) => {
     const db = await connect();
-    const deals = await db.collection(CollName_Beauty).find({ category }).toArray();
+    const deals = await db.collection(CollName_Deal).find({ category }).toArray();
     return deals;
   };
 
