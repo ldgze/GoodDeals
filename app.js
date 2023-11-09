@@ -24,7 +24,5 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "front/dist", "index.html"));
 });
 
-app.set("trust proxy", 1);
-
 myDB.connect();
 export default app;
