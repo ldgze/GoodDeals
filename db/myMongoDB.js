@@ -5,7 +5,7 @@ dotenv.config();
 
 function MyMongoDB() {
   const myDB = {};
-  const uri = process.env.MONGODB_URI;
+  const uri = process.env.MONGODB_URI || "mongodb://localhost:27017";
 
   const DBName = "deals";
   const CollName_Deal = "dealinfo";

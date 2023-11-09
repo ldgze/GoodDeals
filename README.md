@@ -4,7 +4,7 @@
 
 GoodDeals is an online platform designed for shoppers to discover, share, and discuss the best deals available across various categories. Users can post their found deals, comment on others, and rank them. With a focus on community interaction and ease of use, GoodDeals not only promotes savings but also facilitates a space for shoppers to interact and help each other find the best discounts around.
 
-Link to GoodDeals Web Application: [GoodDeals](https://gooddealsweb.onrender.com)
+Link to GoodDeals Web Application: (https://gooddeals.onrender.com)
 
 ## Design Document
 
@@ -56,8 +56,8 @@ Deal Detail Page:
 - MongoDB
 
 ## Tech Requirements
-
-- Node.js: v20.7.0 or above
+- React: v18.2.0 or above
+- Node.js: v20.6.1 or above
 - MongoDB: v6.1.0 or above
 - Express.js: v4.18.2 or above
 
@@ -74,12 +74,24 @@ Deal Detail Page:
 `npm install`
 
 **4. Connect Database:** <br>
-Include a `.env` file in the project's root directory to set up the `MONGODB_URI` with your MongoDB connection string.
+Configured in the `MONGODB_URI` environment variable or have a MongoDB server running on `localhost:27017` to connect database.
 
-**5. Run the application:** <br>
-`npm start`
+**5. Import Data(Optional):** <br>
+`npm run initDB` to initializing the database with the 1000 deals data.
 
-Then, open your browser and navigate to http://localhost:3000/ to start using Quiz Everyone.
+**6. Navigate to the frontend directory:** <br>
+`cd front`
+
+**7. Install dependencies:** <br>
+`npm install`
+
+**8. Build the frontend:** <br>
+`npm run build`
+
+**9. Start the backend server:** <br>
+In the project directory: `npm start`
+
+Then, open your browser and navigate to http://localhost:3000/ to start using GoodDeals.
 
 ## Authors
 
