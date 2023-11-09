@@ -8,7 +8,7 @@ Link to GoodDeals Web Application: (https://gooddeals.onrender.com)
 
 ## Design Document
 
-[View Design Document](https://docs.google.com/document/d/1L9pRUgOllCcjh4FPXOf4n7vzCFfgaMXvKw62Ob7jRd0/edit?usp=sharing)
+View Design Document: [Design Document](https://docs.google.com/document/d/1L9pRUgOllCcjh4FPXOf4n7vzCFfgaMXvKw62Ob7jRd0/edit?usp=sharing)
 
 ## Features
 
