@@ -4,11 +4,11 @@
 
 GoodDeals is an online platform designed for shoppers to discover, share, and discuss the best deals available across various categories. Users can post their found deals, comment on others, and rank them. With a focus on community interaction and ease of use, GoodDeals not only promotes savings but also facilitates a space for shoppers to interact and help each other find the best discounts around.
 
-Link to GoodDeals Web Application: ()
+Link to GoodDeals Web Application: [GoodDeals](https://gooddealsweb.onrender.com)
 
 ## Design Document
 
-[View Design Document]()
+[View Design Document](https://docs.google.com/document/d/1L9pRUgOllCcjh4FPXOf4n7vzCFfgaMXvKw62Ob7jRd0/edit?usp=sharing)
 
 ## Features
 
@@ -23,6 +23,16 @@ Link to GoodDeals Web Application: ()
 - **Deals Display:** Deals are organized and displayed on their respective category pages
 
 ## Screenshot
+
+Home Page:
+![Home page screenshot1](https://github.com/Yushicui/GoodDeals/blob/main/screenshot/Homepage.jpg)
+![Home page screenshot2](https://github.com/Yushicui/GoodDeals/blob/main/screenshot/HomePage2.jpg)
+
+Create Deal Page:
+![Create Deal page screenshot](https://github.com/Yushicui/GoodDeals/blob/main/screenshot/CreateDealPage.jpg)
+
+Deal Detail Page:
+![Deal Detail screenshot](https://github.com/Yushicui/GoodDeals/blob/main/screenshot/DealDetailPage.jpg)
 
 ## Tech Stack
 
@@ -85,11 +95,11 @@ This project was created as a part of the Web Development class in Computer Scie
 
 ## Link to the Google slides
 
-View the presentation of the project in this [google slides]()
+View the presentation of the project in this [google slides](https://docs.google.com/presentation/d/1Co03Snc30ntdBwIYP4DPWdYoVIXBXR4g2RQfKjlzYpU/edit?usp=sharing)
 
 ## Link to the Video Demonstration
 
-Watch a detailed walkthrough of the project in this [video demonstration]()
+Watch a detailed walkthrough of the project in this [video demonstration](https://youtu.be/bLCbPwpOJ14)
 
 ## License
 
