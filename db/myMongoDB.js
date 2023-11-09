@@ -7,9 +7,9 @@ function MyMongoDB() {
   const myDB = {};
   const uri = process.env.MONGODB_URI;
 
-  const DBName = "deals"
-  const CollName_Deal = "dealinfo"
-  const CollName_Comment = "comment"
+  const DBName = "deals";
+  const CollName_Deal = "dealinfo";
+  const CollName_Comment = "comment";
 
   const client = new MongoClient(uri);
 
@@ -24,11 +24,10 @@ function MyMongoDB() {
     return client.db(DBName);
   }
 
-
   myDB.createDeal = async (deal) => {
     const db = await connect();
     return await db.collection(CollName_Deal).insertOne(deal);
-};
+  };
 
   myDB.getDeals = async (query = {}) => {
     const db = await connect();
@@ -45,75 +44,52 @@ function MyMongoDB() {
   };
 
   myDB.updateDeal = async function (id, updateData) {
-
     const db = await connect();
-    const result = await db.collection(CollName_Deal).updateOne({ _id: new ObjectId(id) }, { $set: updateData });
+    const result = await db
+      .collection(CollName_Deal)
+      .updateOne({ _id: new ObjectId(id) }, { $set: updateData });
     return result;
   };
-
-  // myDB.deleteDeal = async function (id) {
-  //   const db = await connect();
-  //   const dealCol = db.collection(CollName_Deal);
-  //   const deal = await dealCol.deleteOne({ _id: new ObjectId(id) });
-  //   return deal;
-  // };
-
-  // myDB.deleteDeal = async function (id) {
-  //   const db = await connect();
-  
-  //   try {
-  //     // Delete the deal
-  //     const dealResult = await db.collection(CollName_Deal).deleteOne({ _id: new ObjectId(id) });
-  
-  //     // If the deal was deleted, delete related comments
-  //     let commentsResult = null;
-  //     if (dealResult.deletedCount === 1) {
-  //       commentsResult = await db.collection(CollName_Comment).deleteMany({ dealId: new ObjectId(id) });
-  //     }
-  
-  //     // Return both results
-  //     return {
-  //       dealResult,
-  //       commentsResult,
-  //     };
-  //   } catch (error) {
-  //     console.error("Error deleting deal and/or related comments:", error);
-  //     throw error; // Rethrow so this can be handled by the caller
-  //   }
-  // };
-  
 
   myDB.deleteDeal = async function (id) {
     const db = await connect();
     const session = client.startSession();
-  
+
     let deleteResult = {
       dealResult: null,
       commentsResult: null,
     };
-  
+
     try {
       await session.withTransaction(async () => {
-        deleteResult.dealResult = await db.collection(CollName_Deal).deleteOne({ _id: new ObjectId(id) }, { session });
+        deleteResult.dealResult = await db
+          .collection(CollName_Deal)
+          .deleteOne({ _id: new ObjectId(id) }, { session });
 
         if (deleteResult.dealResult.deletedCount === 1) {
-          deleteResult.commentsResult = await db.collection(CollName_Comment).deleteMany({ dealId: id }, { session });
+          deleteResult.commentsResult = await db
+            .collection(CollName_Comment)
+            .deleteMany({ dealId: id }, { session });
         }
       });
     } catch (error) {
-      console.error("Error occurred during transaction, it will be aborted:", error);
-      throw error; // Rethrow so this can be handled by the caller
+      console.error(
+        "Error occurred during transaction, it will be aborted:",
+        error,
+      );
+      throw error;
     } finally {
-      await session.endSession(); // End the session
+      await session.endSession();
     }
     return deleteResult;
   };
 
-
-
   myDB.getDealsByCategory = async (category) => {
     const db = await connect();
-    const deals = await db.collection(CollName_Deal).find({ category }).toArray();
+    const deals = await db
+      .collection(CollName_Deal)
+      .find({ category })
+      .toArray();
     return deals;
   };
 
@@ -121,15 +97,17 @@ function MyMongoDB() {
     const db = await connect();
     return await db.collection(CollName_Comment).insertOne(comment);
   };
-  
+
   myDB.getCommentsByDealId = async (dealId) => {
     const db = await connect();
     return await db.collection(CollName_Comment).find({ dealId }).toArray();
   };
-  
+
   myDB.deleteComment = async (commentId) => {
     const db = await connect();
-    return await db.collection(CollName_Comment).deleteOne({ _id: new ObjectId(commentId) });
+    return await db
+      .collection(CollName_Comment)
+      .deleteOne({ _id: new ObjectId(commentId) });
   };
 
   myDB.closeConnection = async () => {

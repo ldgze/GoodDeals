@@ -6,8 +6,7 @@
   "author": "Yushi Cui, Zexi Gong",
   "license": "MIT",
   "scripts": {
-    "start": "node ./node_modules/nodemon/bin/nodemon.js ./bin/www.js",
-    "initDB": "mongoimport -d deals -c beauty --jsonArray db/initialPhotoSharingData.json"
+    "start": "node ./node_modules/nodemon/bin/nodemon.js ./bin/www.js"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",

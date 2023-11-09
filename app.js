@@ -5,7 +5,6 @@ import logger from "morgan";
 import { fileURLToPath } from "url";
 import myDB from "./db/myMongoDB.js";
 
-
 import indexRouter from "./routes/index.js";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -21,9 +20,9 @@ app.use(express.static(path.join(__dirname, "front", "dist")));
 
 app.use("/", indexRouter);
 
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname ,"front/dist", 'index.html'));
-  });
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "front/dist", "index.html"));
+});
 
 app.set("trust proxy", 1);
 

@@ -3,64 +3,64 @@
 
 /* Style for the navigation bar */
 nav {
-    background-color: #ffbfca; /* Rose Gold background color */
-    color: #FFF; /* White text color */
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
-    /*position: fixed; /* Fixed position for navigation bar */
-    width: 100%; 
+  background-color: #ffbfca; /* Rose Gold background color */
+  color: #fff; /* White text color */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  /*position: fixed; /* Fixed position for navigation bar */
+  width: 100%;
 }
 
 /* Style for the navigation bar links */
 nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: space-between; /* Space out the links evenly */
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-between; /* Space out the links evenly */
 }
 
 nav li {
-    padding: 10px 20px;
+  padding: 10px 20px;
 }
 
 nav a {
-    text-decoration: none;
-    color: #FFF;
-    font-weight: bold;
-    transition: color 0.3s; /* Smooth color transition on hover */
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  transition: color 0.3s; /* Smooth color transition on hover */
 }
 
 /* Style the buttons on hover */
 nav a:hover {
-    color: #FF1493; /* Change text color to a deeper pink on hover */
+  color: #ff1493; /* Change text color to a deeper pink on hover */
 }
 
 /* Style the Home button differently */
 nav ul li:first-child a {
-    background-color: #FF69B4; /* Pink background color for Home button */
-    color: #FFF;
-    border-radius: 5px;
-    padding: 10px 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add a subtle button shadow */
+  background-color: #ff69b4; /* Pink background color for Home button */
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add a subtle button shadow */
 }
 
 /* Style for the search box */
 .search-box {
-    display: flex;
+  display: flex;
 }
 
 .search-box input {
-    padding: 5px;
-    border: none;
-    border-radius: 4px;
-    background-color: #FFF; /* White background for search input */
+  padding: 5px;
+  border: none;
+  border-radius: 4px;
+  background-color: #fff; /* White background for search input */
 }
 
 .search-button {
-    background-color: #FF69B4; /* Pink background color for the search button */
-    color: #FFF;
-    border: none;
-    border-radius: 4px;
-    margin-left: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  background-color: #ff69b4; /* Pink background color for the search button */
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  margin-left: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }

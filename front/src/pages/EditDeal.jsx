@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 
 export function EditDeal() {
   const [dealData, setDeal] = useState({
-    title: '',
-    description: '',
-    weblink: '',
-    imagelink: '',
-    category: '',
+    title: "",
+    description: "",
+    weblink: "",
+    imagelink: "",
+    category: "",
     like: 0,
   });
   const { dealId } = useParams();
@@ -26,16 +26,16 @@ export function EditDeal() {
       } catch (error) {
         console.error("Error:", error);
       }
-    } 
+    }
 
     fetchDeal();
   }, [dealId]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setDeal(prevDealData => ({
+    setDeal((prevDealData) => ({
       ...prevDealData,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -43,22 +43,22 @@ export function EditDeal() {
     e.preventDefault();
     try {
       const response = await fetch(`/api/deals/id/${dealId}`, {
-        method: 'PUT',
+        method: "PUT",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(
-          {title: dealData.title,
+        body: JSON.stringify({
+          title: dealData.title,
           description: dealData.description,
           weblink: dealData.weblink,
           imagelink: dealData.imagelink,
-          category: dealData.category}),
+          category: dealData.category,
+        }),
       });
-      
 
       if (response.ok) {
-        alert('Deal updated successfully!');
-        navigate(`/deals/id/${dealId}`); 
+        alert("Deal updated successfully!");
+        navigate(`/deals/id/${dealId}`);
       } else {
         console.error("Error updating deal");
       }
@@ -74,7 +74,7 @@ export function EditDeal() {
           <h1>Edit Deal</h1>
           <form onSubmit={handleSubmit}>
             <label htmlFor="title">Title</label>
-            <div className="form-group mb-3" >
+            <div className="form-group mb-3">
               <input
                 type="text"
                 name="title"
@@ -94,7 +94,7 @@ export function EditDeal() {
                 className="form-control"
               />
             </div>
-            <div className="form-group mb-3" >
+            <div className="form-group mb-3">
               <label htmlFor="weblink">Deal Link</label>
               <input
                 type="text"
@@ -132,13 +132,14 @@ export function EditDeal() {
                 <option value="electronics">Electronics</option>
               </select>
             </div>
-            <button type="submit" className="btn btn-primary">Update Deal</button>
+            <button type="submit" className="btn btn-primary">
+              Update Deal
+            </button>
           </form>
         </div>
       </div>
     </div>
   );
-};
+}
 
 EditDeal.propTypes = {};
-

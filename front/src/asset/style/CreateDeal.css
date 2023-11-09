@@ -1,17 +1,17 @@
 .create-deal-form {
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .create-deal-form input,
-  .create-deal-form textarea,
-  .create-deal-form select {
-    margin-bottom: 15px;
-  }
-  
-  .create-deal-form button {
-    width: 100%;
-    padding: 10px;
-  }
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.create-deal-form input,
+.create-deal-form textarea,
+.create-deal-form select {
+  margin-bottom: 15px;
+}
+
+.create-deal-form button {
+  width: 100%;
+  padding: 10px;
+}

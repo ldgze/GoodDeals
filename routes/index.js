@@ -1,9 +1,8 @@
 import express from "express";
-const router = express.Router();
-
 import myDB from "../db/myMongoDB.js";
 
-// get all posts
+const router = express.Router();
+
 router.get("/api/deals", async function (req, res) {
   try {
     const deals = await myDB.getDeals();
@@ -13,17 +12,16 @@ router.get("/api/deals", async function (req, res) {
   }
 });
 
-router.post('/api/deals/deal', async (req, res) => {
+router.post("/api/deals/deal", async (req, res) => {
   const newDeal = req.body;
   try {
-      const result = await myDB.createDeal(newDeal);
-      res.status(201).json({ success: true, dealId: result.insertedId });
+    const result = await myDB.createDeal(newDeal);
+    res.status(201).json({ success: true, dealId: result.insertedId });
   } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: error.message });
+    console.error(error);
+    res.status(500).json({ error: error.message });
   }
 });
-
 
 router.get("/api/deals/id/:id", async (req, res) => {
   try {
@@ -39,16 +37,15 @@ router.get("/api/deals/id/:id", async (req, res) => {
   }
 });
 
-
 router.put("/api/deals/id/:id", async function (req, res) {
   try {
     const id = req.params.id;
     const updateData = req.body;
     const result = await myDB.updateDeal(id, updateData);
     if (result.modifiedCount === 1) {
-      res.json({ message: 'Deal updated successfully' });
+      res.json({ message: "Deal updated successfully" });
     } else {
-      res.status(404).json({ error: 'Deal not found' });
+      res.status(404).json({ error: "Deal not found" });
     }
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -60,28 +57,26 @@ router.delete("/api/deals/id/:id", async function (req, res) {
     const id = req.params.id;
     const result = await myDB.deleteDeal(id);
     if (result.dealResult.deletedCount === 1) {
-      res.json({ message: 'Deal deleted successfully' });
+      res.json({ message: "Deal deleted successfully" });
     } else {
-      res.status(404).json({ error: 'Deal not found' });
+      res.status(404).json({ error: "Deal not found" });
     }
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 });
 
-
-router.get('/api/deals/category/:categoryName', async (req, res) => {
+router.get("/api/deals/category/:categoryName", async (req, res) => {
   try {
     const category = req.params.categoryName;
     const deals = await myDB.getDealsByCategory(category);
     res.json(deals);
   } catch (error) {
-    res.status(500).send('Server error');
+    res.status(500).send("Server error");
   }
 });
 
-
-router.post('/api/deals/id/:dealId/comments', async (req, res) => {
+router.post("/api/deals/id/:dealId/comments", async (req, res) => {
   try {
     const { dealId } = req.params;
     const comment = { ...req.body, dealId };
@@ -92,8 +87,7 @@ router.post('/api/deals/id/:dealId/comments', async (req, res) => {
   }
 });
 
-
-router.get('/api/deals/id/:dealId/comments', async (req, res) => {
+router.get("/api/deals/id/:dealId/comments", async (req, res) => {
   try {
     const { dealId } = req.params;
     const comments = await myDB.getCommentsByDealId(dealId);
@@ -103,8 +97,7 @@ router.get('/api/deals/id/:dealId/comments', async (req, res) => {
   }
 });
 
-
-router.delete('/api/deals/comments/:commentId', async (req, res) => {
+router.delete("/api/deals/comments/:commentId", async (req, res) => {
   try {
     const { commentId } = req.params;
     const result = await myDB.deleteComment(commentId);
@@ -116,14 +109,5 @@ router.delete('/api/deals/comments/:commentId', async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
-
-
-
-
-
-
-
-
-
 
 export default router;
