@@ -6,6 +6,7 @@ import { HomePage } from "./pages/HomePage";
 import { AppNavBar } from "./layout/AppNavBar";
 import { AppFooter } from "./layout/AppFooter";
 import { DisplayPage } from "./pages/DisplayPage";
+import { LoginPage } from "./pages/LoginPage";
 
 import "./asset/style/App.css";
 
@@ -52,6 +53,7 @@ export default function App() {
           path="/category/electronics"
           element={<DisplayPage category="/category/electronics" />}
         />
+        <Route path="/login" element={<LoginPage />} />
       </Routes>
       <AppFooter />
     </div>
