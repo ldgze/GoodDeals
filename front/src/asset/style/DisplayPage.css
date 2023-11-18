@@ -2,34 +2,49 @@
 
 /* Page container */
 .display-page {
-  font-family: Arial, sans-serif;
-  background-image: url("../images/wesley-tingey-ZdOW9Qd8mQo-unsplash.jpg");
+  font-family: 'Quicksand';
   background-size: cover;
   /* background-color: #ffe4e1; Rose gold background color */
   padding: 10px;
 }
 
+.container-fluid{
+  padding: 20px;
+}
+
+.display-page h2 {
+  color: #FF69B4; 
+  padding-left: 20px;
+  margin: 10px 0px;
+  font-family: 'Pacifico';
+}
+
 /* Post card */
 .post-card {
-  background-color: #ffe4e1;
-  border: 1px solid #ff1493; /* Rose gold border */
+  background-color: #fddbe0;
+  /* border: 2px solid #AD6690;  */
   border-radius: 8px;
   padding: 10px;
-  margin: 10px;
+  box-shadow: 0px 2px 4px #b48ea4;
 }
 
 .post-card-img {
-  max-width: 400px;
+  max-width: 100%;
+  height: auto;
+  width:fit-content;
+  border-radius: 8px;
 }
 
 .post-card h3 {
   font-size: 24px;
-  color: #ff1493; /* Rose gold heading color */
+  color: #FF69B4; /* Rose gold heading color */
   margin-bottom: 5px;
 }
 
 .post-card p {
-  color: #0011ff; /* Gold text color */
+  color: #AD6690; /* Gold text color */
+  margin: 0% 5%;
+  text-align: left;
 }
 
 .post-card .post-content {
@@ -50,7 +65,7 @@
 }
 
 .pagination button {
-  background-color: #ff1493; /* Rose gold button background color */
+  background-color: #FF69B4; /* Rose gold button background color */
   color: #fff; /* White button text color */
   border: none;
   border-radius: 4px;
@@ -60,5 +75,5 @@
 }
 
 .pagination button:hover {
-  background-color: #ff69b4; /* Lighter rose gold on hover */
+  background-color: #ff1493; /* Lighter rose gold on hover */
 }

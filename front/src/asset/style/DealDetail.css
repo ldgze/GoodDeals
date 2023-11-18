@@ -1,32 +1,37 @@
 /* Add styles for the DetailPage component */
 
 /* Container styles */
-.container {
-  background-color: #ffe4e1; /* Rose gold background color */
-  padding: 20px;
+.container-fluid {
+  background-color: #fff1ef; /* Rose gold background color */
+  padding: 0px;
+  margin-top: 0%;
 }
 
 /* Card styles */
 .card {
-  background-color: #ffdffa; /* Gold card background color */
-  border: 1px solid #ff1493; /* Rose gold border */
-  border-radius: 10px;
+  background-color: #fddbe0; /* Gold card background color */
+  border-radius: 20px;
   padding: 30px;
-  margin: 20px auto;
-  max-width: 1200px;
+  margin: auto;
+  width:80%;
+  box-shadow: 0px 2px 4px #b48ea4;
+  font-family: 'Quicksand';
 }
 
 /* Image styles */
 .card-img-top {
   max-height: 400px;
   object-fit: cover;
+  border-radius: 20px;
 }
 
 /* Title styles */
 .card-title {
-  color: #ff1493; /* Rose gold heading color */
+  color: #ff69b4; /* Rose gold heading color */
   font-size: 32px;
   margin-bottom: 10px;
+  font-family: 'Quicksand';
+  font-weight: bolder;
 }
 
 /* Description styles */
@@ -38,31 +43,40 @@
 
 /* Edit button styles */
 .btn-secondary {
-  background-color: #ff1493; /* Rose gold button background color */
+  background-color: #ff69b4; /* Rose gold button background color */
   color: #fff; /* White button text color */
   border: none;
   border-radius: 4px;
   padding: 10px 20px;
   margin-right: 10px;
-  text-transform: uppercase;
 }
 
 .btn-secondary:hover {
-  background-color: #ff69b4; /* Lighter rose gold on hover */
+  background-color: #ff1493; /* Lighter rose gold on hover */
 }
 
 /* Like button styles */
 .card-body button {
-  background-color: #ff1493; /* Rose gold button background color */
+  background-color: #AD6690; /* Rose gold button background color */
   color: #fff; /* White button text color */
   border: none;
   border-radius: 4px;
-  padding: 10px 20px;
+  padding: 10px 10px;
   margin-right: 10px;
 }
 
+
 .card-body button:hover {
   background-color: #ff69b4; /* Lighter rose gold on hover */
+}
+
+.btn-danger {
+  background-color: #FF8F67; /* Rose gold button background color */
+  color: #fff; /* White button text color */
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  margin-left: 0px;
 }
 
 .comment-section {
@@ -70,17 +84,22 @@
   width: 100%;
   margin-top: 20px;
   padding: 20px;
-  border: 3px solid #9803fb;
-  background-color: #f3c9ec;
+  border: 3px solid #AD6690;
+  background-color: #facbe6;
+  border-radius: 20px;
 }
 
 .comment-section button {
   padding: 10px 20px; /* Adjust padding as needed */
-  background-color: #60bee7; /* Change the button background color */
+  background-color: #FF8F67; /* Change the button background color */
   color: #fff; /* Set text color to white */
   border: none; /* Remove the button border */
   cursor: pointer;
   transition: background-color 0.3s ease; /* Add a smooth background color transition */
+}
+
+.comment-section button:hover {
+  background-color: #5084c3;
 }
 
 /* Comment input styles */
@@ -95,7 +114,7 @@
 
 /* Add comment button styles */
 .btn-primary {
-  background-color: #ff1493; /* Rose gold button background color */
+  background-color: #ff69b4; /* Rose gold button background color */
   color: #fff; /* White button text color */
   border: none;
   border-radius: 4px;
@@ -108,24 +127,14 @@
 
 /* Comments styles */
 h3 {
-  color: #ff1493; /* Rose gold heading color */
+  color: #ff69b4; /* Rose gold heading color */
   font-size: 24px;
   margin-top: 20px;
 }
 
 /* Delete button styles */
-.btn-danger {
-  background-color: #ff1493; /* Rose gold button background color */
-  color: #fff; /* White button text color */
-  border: none;
-  border-radius: 4px;
-  padding: 5px 10px;
-  margin-left: 5px;
-}
 
-.btn-danger:hover {
-  background-color: #ff69b4; /* Lighter rose gold on hover */
-}
+
 
 /* CSS for the comment form container */
 .comment-form {
@@ -148,7 +157,7 @@ h3 {
 .comment-form button {
   margin-top: 10px; /* Add some spacing between textarea and button */
   padding: 10px 20px; /* Adjust padding as needed */
-  background-color: #ff1493; /* Change the button background color */
+  background-color: #ff69b4; /* Change the button background color */
   color: #fff; /* Set text color to white */
   border: none; /* Remove the button border */
   cursor: pointer;
@@ -157,7 +166,7 @@ h3 {
 
 /* Style the button on hover */
 .comment-form button:hover {
-  background-color: #0056a3; /* Change the background color on hover */
+  background-color: #ff1493; /* Change the background color on hover */
 }
 @media (max-width: 768px) {
   .comment-form textarea {

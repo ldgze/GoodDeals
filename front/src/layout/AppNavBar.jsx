@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 
 export function AppNavBar() {
   return (
+    <div className="container-fluid">
     <nav>
       <ul>
         <li>
@@ -36,6 +37,7 @@ export function AppNavBar() {
       </div>
       </ul>
     </nav>
+    </div>
   );
 }
 

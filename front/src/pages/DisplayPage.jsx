@@ -36,15 +36,11 @@ export function DisplayPage({ category }) {
 
   return (
     <div>
-      <div className="row justify-content-center">
-        <Link to="/createdeal" className="btn btn-primary btn-lg">
-          Create a Deal
-        </Link>
-      </div>
+
       <div className="display-page">
-        <h2>Deals</h2>
+        <h2>Deals - {category.replace("/category/", "")} </h2>
         {currentPosts.map((post, index) => (
-          <div className="container" key={index}>
+          <div className="container-fluid" key={index}>
             <div className="post-card" key={post._id}>
               <div className="row justify-content-center">
                 <div className="col-md-4">

@@ -3,12 +3,12 @@
 /* Container styles */
 .container {
   background-color: #ffe4e1; /* Rose gold background color */
-  padding: 20px;
+  /* padding: 20px; */
 }
 
 /* Heading styles */
 h1 {
-  color: #ff1493; /* Rose gold heading color */
+  color: #FF69B4; /* Rose gold heading color */
 }
 
 /* Lead text styles */
@@ -20,7 +20,7 @@ h1 {
 
 /* Button styles */
 .btn-primary {
-  background-color: #ff1493; /* Rose gold button background color */
+  background-color: #FF69B4; /* Rose gold button background color */
   color: #fff; /* White button text color */
   border: none;
   border-radius: 4px;

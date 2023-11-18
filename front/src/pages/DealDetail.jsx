@@ -109,31 +109,31 @@ export function DealDetail() {
   };
 
   return (
-    <div className="container my-5">
+    <div className="container-fluid">
       <div className="card">
         <img src={deal.imagelink} alt={deal.title} className="card-img-top" />
         <div className="card-body">
-          <h1 className="card-title">{deal.title}</h1>
+          <h2 className="card-title">{deal.title}</h2>
           <p className="card-text">{deal.description}</p>
 
           <div className="card-btn">
             <button
               onClick={handleLike}
               disabled={liked}
-              className="btn btn-success mx-2"
+              className="btn btn-success "
             >
               Like ({deal.like})
             </button>
             <Link
               to={`/deals/edit/id/${dealId}`}
-              className="btn btn-secondary mx-2"
+              className="btn btn-secondary "
             >
               Edit
             </Link>
             <DeleteDeal dealId={dealId} />
           </div>
           <section className="comment-section">
-            <h2>Comments</h2>
+            <h3>Comments</h3>
             {comments.map((comment, index) => (
               <div key={index}>
                 <p>{comment.text}</p>

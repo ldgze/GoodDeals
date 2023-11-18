@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
 import { CreateDeal } from "./pages/CreateDeal";
 import { DealDetail } from "./pages/DealDetail";
 import { EditDeal } from "./pages/EditDeal";
@@ -12,17 +12,24 @@ import "./asset/style/App.css";
 export default function App() {
   return (
     <div>
-      <AppNavBar />
-      <div className="container mt-4">
+      
+      <div className="container-fluid">
         <div className="row justify-content-center">
-          <div className="col-md-10 text-center">
+          <div className="col-md-8 text-center">
             <h1 className="page-heading">GoodDeals</h1>
             <p className="lead">
               The best place to discover and share deals online!
             </p>
           </div>
+          <div className="col-md-4 text-center">
+        <Link to="/createdeal" className="btn btn-primary btn-lg">
+          Create a Deal
+        </Link>
+          </div>
         </div>
       </div>
+
+      <AppNavBar />
 
       <Routes>
         <Route path="/" element={<HomePage category="/" />} />
