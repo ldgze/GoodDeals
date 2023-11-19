@@ -9,7 +9,9 @@ nav {
   /* position: fixed; */
   width: 100%;
   margin:0px 10px;
-  padding: 5px 10px;
+  padding: 3px 10px;
+  font-family: 'Quicksand';
+  font-size: larger;
 }
 
 /* Style for the navigation bar links */
@@ -22,7 +24,7 @@ nav ul {
 }
 
 nav li {
-  padding: 10px 20px;
+  padding: 8px 20px;
 }
 
 nav a {
@@ -42,7 +44,7 @@ nav ul li:first-child a {
   background-color: #ff69b4; /* Pink background color for Home button */
   color: #fff;
   border-radius: 5px;
-  padding: 10px 20px;
+  padding: 8px 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add a subtle button shadow */
 }
 

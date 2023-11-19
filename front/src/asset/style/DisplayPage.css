@@ -17,6 +17,8 @@
   padding-left: 20px;
   margin: 10px 0px;
   font-family: 'Pacifico';
+  text-transform: capitalize;
+  font-size: 36px;
 }
 
 /* Post card */
@@ -36,20 +38,22 @@
 }
 
 .post-card h3 {
-  font-size: 24px;
+  font-size: 30px;
   color: #FF69B4; /* Rose gold heading color */
   margin-bottom: 5px;
+  font-weight: bold;
 }
 
 .post-card p {
   color: #AD6690; /* Gold text color */
   margin: 0% 3%;
   text-align: left;
+  font-size: 24px;
 }
 
 .post-card .post-content {
-  color: #333; /* Dark text color */
-  margin-top: 10px;
+  color: #757575; /* Dark text color */
+  margin-top: 0%;
 }
 
 .post-card .post-meta {

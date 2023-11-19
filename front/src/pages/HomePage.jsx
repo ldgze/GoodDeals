@@ -59,7 +59,7 @@ export function HomePage() {
                     to={`/deals/id/${post._id}`}
                     className="btn btn-primary btn-lg"
                   >
-                    detail page
+                    Detail Page
                   </Link>
                 </div>
               </div>

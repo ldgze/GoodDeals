@@ -19,6 +19,7 @@ h1 {
   font-family: 'Pacifico';
   text-align: left;
   margin-left: 10px;
+  font-size: 48px;
 }
 
 /* Lead text styles */
@@ -38,7 +39,7 @@ h1 {
   border: none;
   border-radius: 4px;
   padding: 10px 20px;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   margin-top: 20px;
   font-family: 'Quicksand';
 }
@@ -55,4 +56,18 @@ footer {
 
 .text-muted{
   color:#FF69B4!important;
+}
+
+.user-functions{
+  display: flex;
+  justify-content: space-between;
+  margin: 25px 0px;
+}
+
+.search-box{
+  margin-top: 20px;
+}
+
+.login .btn-primary{
+  background-color: #FFB85F;
 }

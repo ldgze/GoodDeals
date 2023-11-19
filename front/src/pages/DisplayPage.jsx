@@ -54,14 +54,11 @@ export function DisplayPage({ category }) {
                   <h3>{post.title}</h3>
                   <p>Likes: {post.like}</p>
                   <p className="post-content">{post.description}</p>
-                  <div className="post-meta">
-                    <p className="post-category">Category: {post.category}</p>
-                  </div>
                   <Link
                     to={`/deals/id/${post._id}`}
                     className="btn btn-primary btn-lg"
                   >
-                    detail page
+                    Detail Page
                   </Link>
                 </div>
               </div>

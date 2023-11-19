@@ -21,20 +21,6 @@ export function AppNavBar() {
         <li>
           <a href="/category/electronics">Electronics</a>
         </li>
-        <li>
-        <div class="search-box">
-            <input type="search"
-              placeholder="Search"/>
-            <button class="search-button">Search</button>
-        </div>
-        </li>
-        <div class="d-flex justify-content-end">
-          <ul class="nav">
-            <li class="nav">
-              <Link to="/login" class="nav-link">Login</Link>
-            </li>
-          </ul>
-      </div>
       </ul>
     </nav>
     </div>
