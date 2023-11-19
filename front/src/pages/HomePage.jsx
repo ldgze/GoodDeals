@@ -41,14 +41,14 @@ export function HomePage() {
           <div className="container-fluid" key={index}>
             <div className="post-card" key={post._id}>
               <div className="row justify-content-center">
-                <div className="col-md-4">
+                <div className="col-md-3">
                   <img
                     src={post.imagelink}
                     alt={post.title}
                     className="post-card-img"
                   />
                 </div>
-                <div className="col-md-8 text-center">
+                <div className="col-md-9 text-center">
                   <h3>{post.title}</h3>
                   <p>Likes: {post.like}</p>
                   <p className="post-content">{post.description}</p>
@@ -71,12 +71,14 @@ export function HomePage() {
           <button
             onClick={() => paginate(currentPage - 1)}
             disabled={currentPage === 1}
+            className="prev"
           >
             Previous Page
           </button>
           <button
             onClick={() => paginate(currentPage + 1)}
             disabled={currentPage === Math.ceil(posts.length / postsPerPage)}
+            className="next"
           >
             Next Page
           </button>

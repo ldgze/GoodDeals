@@ -29,9 +29,9 @@
 }
 
 .post-card-img {
-  max-width: 100%;
+  width: 100%;
   height: auto;
-  width:fit-content;
+  /* width:fit-content; */
   border-radius: 8px;
 }
 
@@ -43,7 +43,7 @@
 
 .post-card p {
   color: #AD6690; /* Gold text color */
-  margin: 0% 5%;
+  margin: 0% 3%;
   text-align: left;
 }
 
@@ -60,16 +60,25 @@
 /* Pagination buttons */
 .pagination {
   display: flex;
-  justify-content: center;
-  margin-top: 20px;
+  justify-content: space-between;
+  margin: 20px 20px 0px 20px;
+}
+.prev {
+  display: flex;
+  justify-content: left;
+}
+
+.next {
+  display: flex;
+  justify-content: right;
 }
 
 .pagination button {
-  background-color: #FF69B4; /* Rose gold button background color */
+  background-color: #FFB85F; /* Rose gold button background color */
   color: #fff; /* White button text color */
   border: none;
   border-radius: 4px;
-  padding: 5px 10px;
+  padding: 10px 20px;
   margin: 0 5px;
   cursor: pointer;
 }

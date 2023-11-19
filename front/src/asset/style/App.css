@@ -47,5 +47,12 @@ h1 {
   background-color: #ff1493; /* Lighter rose gold on hover */
 }
 
-/* DisplayPage styles */
-/* You can link to your existing DisplayPage CSS file here */
+footer {
+  text-align: center;
+  font-family: 'Pacifico';
+  background-color: #fceff2;
+}
+
+.text-muted{
+  color:#FF69B4!important;
+}

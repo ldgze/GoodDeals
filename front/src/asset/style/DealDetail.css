@@ -20,7 +20,7 @@
 
 /* Image styles */
 .card-img-top {
-  max-height: 400px;
+  max-height: 500px;
   object-fit: cover;
   border-radius: 20px;
 }
@@ -67,7 +67,7 @@
 
 
 .card-body button:hover {
-  background-color: #ff69b4; /* Lighter rose gold on hover */
+  background-color: #ff1493; /* Lighter rose gold on hover */
 }
 
 .btn-danger {
