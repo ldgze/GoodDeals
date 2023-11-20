@@ -132,6 +132,7 @@ export function DealDetail() {
             </Link>
             <DeleteDeal dealId={dealId} />
           </div>
+          <hr class="solid"></hr>
           <section className="comment-section">
             <h3>Comments</h3>
             {comments.map((comment, index) => (

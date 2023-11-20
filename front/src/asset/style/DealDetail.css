@@ -82,11 +82,11 @@
 .comment-section {
   align-items: flex-start;
   width: 100%;
-  margin-top: 20px;
-  padding: 20px;
-  border: 3px solid #AD6690;
+  margin-top: 0px;
+  padding: 0px 20px;
+  /* border: 3px solid #AD6690;
   background-color: #facbe6;
-  border-radius: 20px;
+  border-radius: 20px; */
 }
 
 .comment-section button {
@@ -142,14 +142,31 @@ h3 {
   flex-wrap: wrap;
   align-items: flex-start;
   padding-top: 20px;
+  width: 100%;
 }
 
 /* CSS for the textarea */
-.comment-form textarea {
+/* .comment-form textarea {
   flex: 10; /* Take up available space */
-  height: 100px; /* Set the desired height for the textarea */
-  padding: 10px; /* Add some padding for better readability */
-  resize: horizontal; /* Allow vertical resizing of the textarea */
+  /* height: 100px; /* Set the desired height for the textarea */
+  /* padding: 10px; 
+  resize: horizontal; 
+  width: 100%;
+} */ 
+
+textarea {
+  width: 100%;
+  height: 60px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 16px;
+  resize: none;
+}
+
+form {
   width: 100%;
 }
 
