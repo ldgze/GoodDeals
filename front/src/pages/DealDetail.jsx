@@ -115,7 +115,7 @@ export function DealDetail() {
         <div className="card-body">
           <h2 className="card-title">{deal.title}</h2>
           <p className="card-text">{deal.description}</p>
-
+          <hr className="solid"></hr>
           <div className="card-btn">
             <button
               onClick={handleLike}
@@ -132,19 +132,9 @@ export function DealDetail() {
             </Link>
             <DeleteDeal dealId={dealId} />
           </div>
-          <hr class="solid"></hr>
-          <section className="comment-section">
-            <h3>Comments</h3>
-            {comments.map((comment, index) => (
-              <div key={index}>
-                <p>{comment.text}</p>
-                <button onClick={() => deleteComment(comment._id)}>
-                  Delete Comment
-                </button>
-              </div>
-            ))}
-            <div className="comment-form">
+          <div className="comment-form">
               <form>
+                <h3>Write Comments</h3>
                 <textarea
                   value={newComment}
                   onChange={(e) => setNewComment(e.target.value)}
@@ -154,6 +144,19 @@ export function DealDetail() {
                 <button onClick={submitComment}>Submit Comment</button>
               </form>
             </div>
+            
+          <section className="comment-section">
+            <h3>Comments</h3>
+            <hr className="solid"></hr>
+            {comments.map((comment, index) => (
+              <div key={index} className="comments">
+                <p>{comment.text}</p>
+                <button onClick={() => deleteComment(comment._id)}>
+                  Delete Comment
+                </button>
+              </div>
+            ))}
+            
           </section>
         </div>
       </div>

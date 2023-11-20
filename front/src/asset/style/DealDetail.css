@@ -80,26 +80,15 @@
 }
 
 .comment-section {
-  align-items: flex-start;
   width: 100%;
   margin-top: 0px;
-  padding: 0px 20px;
-  /* border: 3px solid #AD6690;
-  background-color: #facbe6;
-  border-radius: 20px; */
+  padding: 0px;
 }
 
-.comment-section button {
-  padding: 10px 20px; /* Adjust padding as needed */
-  background-color: #FF8F67; /* Change the button background color */
-  color: #fff; /* Set text color to white */
-  border: none; /* Remove the button border */
-  cursor: pointer;
-  transition: background-color 0.3s ease; /* Add a smooth background color transition */
-}
+
 
 .comment-section button:hover {
-  background-color: #5084c3;
+  background-color: #8f5577;
 }
 
 /* Comment input styles */
@@ -132,9 +121,6 @@ h3 {
   margin-top: 20px;
 }
 
-/* Delete button styles */
-
-
 
 /* CSS for the comment form container */
 .comment-form {
@@ -143,16 +129,7 @@ h3 {
   align-items: flex-start;
   padding-top: 20px;
   width: 100%;
-}
-
-/* CSS for the textarea */
-/* .comment-form textarea {
-  flex: 10; /* Take up available space */
-  /* height: 100px; /* Set the desired height for the textarea */
-  /* padding: 10px; 
-  resize: horizontal; 
-  width: 100%;
-} */ 
+} 
 
 textarea {
   width: 100%;
@@ -170,15 +147,33 @@ form {
   width: 100%;
 }
 
+.comments {
+  margin-left: 40px;
+  padding: 30px 0px 10px 20px;
+  box-shadow: 0 0.8em 0.8em -1em rgba(0, 0, 0, .25);
+  display: flex;
+  justify-content: space-between;
+}
+
+.comment-section button {
+  padding: 10px 20px; /* Adjust padding as needed */
+  margin: 0px;
+  background-color: #AD6690; /* Change the button background color */
+  color: #fff; /* Set text color to white */
+  display: flex;
+  justify-content: right;
+}
+
 /* CSS for the submit button */
 .comment-form button {
-  margin-top: 10px; /* Add some spacing between textarea and button */
-  padding: 10px 20px; /* Adjust padding as needed */
+  margin: 10px 0px 0px 0px; /* Add some spacing between textarea and button */
+  padding: 10px 2cqi; /* Adjust padding as needed */
   background-color: #ff69b4; /* Change the button background color */
   color: #fff; /* Set text color to white */
-  border: none; /* Remove the button border */
-  cursor: pointer;
-  transition: background-color 0.3s ease; /* Add a smooth background color transition */
+  display: flex;
+  justify-content: right;
+  text-align: right;
+  float: right;
 }
 
 /* Style the button on hover */
