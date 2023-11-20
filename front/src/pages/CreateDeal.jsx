@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import "../asset/style/CreateDeal.css";
+
+import {GetUser} from "../components/GetUser";
 
 export function CreateDeal() {
   const [dealData, setDealData] = useState({
@@ -10,9 +12,22 @@ export function CreateDeal() {
     imagelink: "",
     category: "",
     like: 0,
+    userId: "",
   });
 
+  const [error, setError] = useState(""); 
+
+  const { user } = GetUser();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!user) {
+      alert("You need to be logged in to create a deal.");
+      navigate("/login");
+    } else {
+      setDealData((prevData) => ({ ...prevData, userId: user.id }));
+    }
+  }, [user, navigate]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -25,28 +40,46 @@ export function CreateDeal() {
       body: JSON.stringify(dealData),
     });
 
-    if (response.ok) {
-      const responseData = await response.json();
-      alert("Deal Created!");
-      console.log("Success:", responseData);
-      const dealId = responseData.dealId;
-      navigate(`/deals/id/${dealId}`);
-    } else {
+    if (!response.ok) {
       console.error("Error:", response.statusText);
-      response
-        .json()
-        .then((json) => console.log(json))
-        .catch((e) => console.log("Error parsing JSON:", e));
+      const errorMsg = await response.text();
+      setError("Deal creation failed: " + errorMsg);
+      return;
     }
+
+    const responseData = await response.json();
+    alert("Deal Created!");
+    console.log("Success:", responseData);
+    const dealId = responseData.dealId;
+    navigate(`/deals/id/${dealId}`);
   };
+
+
+  //   if (response.ok) {
+  //     const responseData = await response.json();
+  //     alert("Deal Created!");
+  //     console.log("Success:", responseData);
+  //     const dealId = responseData.dealId;
+  //     navigate(`/deals/id/${dealId}`);
+  //   } else {
+  //     console.error("Error:", response.statusText);
+  //     response
+  //       .json()
+  //       .then((json) => console.log(json))
+  //       .catch((e) => console.log("Error parsing JSON:", e));
+  //   }
+  // };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
     setDealData({ ...dealData, [name]: value });
   };
+  
 
   return (
-    <div className="container mt-5">
+    <>
+    {user ? (
+      <div className="container mt-5">
       <div className="row justify-content-center">
         <div className="col-md-10">
           <h1>Create Deal</h1>
@@ -121,6 +154,11 @@ export function CreateDeal() {
         </div>
       </div>
     </div>
+    ) : (
+      <div>Not logged in</div>
+    )}
+    {error && <div className="alert alert-danger">{error}</div>}
+  </>
   );
 }
 

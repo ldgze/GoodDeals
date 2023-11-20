@@ -10,6 +10,7 @@ function MyMongoDB() {
   const DBName = "deals";
   const CollName_Deal = "dealinfo";
   const CollName_Comment = "comment";
+  const CollName_User = "userinfo";
 
   const client = new MongoClient(uri);
 
@@ -109,6 +110,17 @@ function MyMongoDB() {
       .collection(CollName_Comment)
       .deleteOne({ _id: new ObjectId(commentId) });
   };
+
+  myDB.insertUser = async (user) => {
+    const db = await connect();
+    return await db.collection(CollName_User).insertOne(user);
+  };
+
+  myDB.getUserByUsername = async (username) => {
+    const db = await connect();
+    return await db.collection(CollName_User).findOne({ username });
+  };
+
 
   myDB.closeConnection = async () => {
     if (client.isConnected()) {

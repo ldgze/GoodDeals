@@ -3,17 +3,17 @@ import { CreateDeal } from "./pages/CreateDeal";
 import { DealDetail } from "./pages/DealDetail";
 import { EditDeal } from "./pages/EditDeal";
 import { HomePage } from "./pages/HomePage";
-import { AppNavBar } from "./layout/AppNavBar";
-import { AppFooter } from "./layout/AppFooter";
+import { AppNavBar } from "./components/AppNavBar";
+import { AppFooter } from "./components/AppFooter";
 import { DisplayPage } from "./pages/DisplayPage";
 import { LoginPage } from "./pages/LoginPage";
 
 import "./asset/style/App.css";
 
 export default function App() {
+
   return (
     <div>
-      
       <div className="container-fluid">
         <div className="row justify-content-center">
           <div className="col-md-7 text-center">
