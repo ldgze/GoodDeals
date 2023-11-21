@@ -106,6 +106,31 @@ export function DealDetail() {
         console.error("Error:", error);
       }
     }
+    else{
+      const updatedDeal = { ...deal };
+      updatedDeal.like -= 1;
+
+      try {
+        const response = await fetch(`/api/deals/id/${dealId}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ like: updatedDeal.like }),
+        });
+
+        if (response.ok) {
+          alert("Cancel liked successfully!");
+          setDeal(updatedDeal);
+          setLiked(false);
+          setLikes(updatedDeal.like);
+        } else {
+          console.error("Error updating deal");
+        }
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    }
   };
 
   return (
@@ -117,13 +142,18 @@ export function DealDetail() {
           <p className="card-text">{deal.description}</p>
           <hr className="solid"></hr>
           <div className="card-btn">
-            <button
+            {/* <button
               onClick={handleLike}
               disabled={liked}
               className="btn btn-success "
             >
               Like ({deal.like})
-            </button>
+            </button> */}
+              <span onClick={handleLike} className="star-section">
+                {/* <span className={`star${liked ? 'liked' : ''}`}>{liked ? '⭐' : '☆'}</span> {deal.like} */}
+                
+                {liked ? <span class="fa fa-star checked"></span> : <span class="fa fa-star-o unchecked"></span>}{deal.like}
+                </span>
             <Link
               to={`/deals/edit/id/${dealId}`}
               className="btn btn-secondary "

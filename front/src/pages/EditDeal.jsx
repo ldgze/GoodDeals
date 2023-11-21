@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import "../asset/style/EditDeal.css";
 
 export function EditDeal() {
   const [dealData, setDeal] = useState({
@@ -68,10 +69,11 @@ export function EditDeal() {
   };
 
   return (
-    <div className="container mt-5">
+    <div className="container-fluid mt-4">
       <div className="row justify-content-center">
         <div className="col-md-6">
-          <h1>Edit Deal</h1>
+          <h2>Edit Deal</h2>
+          <div className="edit-form">
           <form onSubmit={handleSubmit}>
             <label htmlFor="title">Title</label>
             <div className="form-group mb-3">
@@ -136,6 +138,7 @@ export function EditDeal() {
               Update Deal
             </button>
           </form>
+          </div>
         </div>
       </div>
     </div>

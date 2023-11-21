@@ -63,14 +63,23 @@ footer {
   display: flex;
   justify-content: space-between;
   margin: 25px 0px;
+  overflow: hidden;
+}
+
+.user-functions .btn-primary {
+  max-height: 44px;
+  min-width: 142px;
 }
 
 .search-box{
   margin-top: 20px;
+  max-height: 44px;
+  font-family: 'Quicksand';
 }
 
 .login .btn-primary{
   background-color: #FFB85F;
+  min-width: 80px;
 }
 
 .login .btn-primary:hover{

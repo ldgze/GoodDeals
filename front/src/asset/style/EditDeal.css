@@ -1,0 +1,31 @@
+h2 {
+    color: #FF69B4; 
+    font-family: 'Pacifico';
+    text-align: left;
+    margin-left: 0px;
+    font-size: 36px;
+}
+
+.edit-form {
+    padding: 20px;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    font-family: 'Quicksand';
+    /* background-color: #fddbe0; */
+  }
+
+label {
+    font-size: 24px;
+    color: #757575;
+}
+  
+
+.form-control{
+    font-size: 18px;
+    background-color: #fff;
+    border: #FFB85F solid 1px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}

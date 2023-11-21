@@ -23,11 +23,11 @@
 
 /* Post card */
 .post-card {
-  background-color: #fddbe0;
-  /* border: 2px solid #AD6690;  */
+  /* background-color: #fddbe0; */
+  background-color: #fde5e8;
   border-radius: 8px;
   padding: 10px;
-  box-shadow: 0px 2px 4px #b48ea4;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .post-card-img {
@@ -42,6 +42,7 @@
   color: #FF69B4; /* Rose gold heading color */
   margin-bottom: 5px;
   font-weight: bold;
+  font-family: 'Quicksand';
 }
 
 .post-card p {
@@ -49,6 +50,7 @@
   margin: 0% 3%;
   text-align: left;
   font-size: 24px;
+    /* font-family: Helvetica, Arial, sans-serif; */
 }
 
 .post-card .post-content {
