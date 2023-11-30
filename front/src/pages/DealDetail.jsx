@@ -152,7 +152,7 @@ export function DealDetail() {
               <span onClick={handleLike} className="star-section">
                 {/* <span className={`star${liked ? 'liked' : ''}`}>{liked ? '⭐' : '☆'}</span> {deal.like} */}
                 
-                {liked ? <span class="fa fa-star checked"></span> : <span class="fa fa-star-o unchecked"></span>}{deal.like}
+                {liked ? <span className="fa fa-star checked"></span> : <span className="fa fa-star-o unchecked"></span>}{deal.like}
                 </span>
             <Link
               to={`/deals/edit/id/${dealId}`}

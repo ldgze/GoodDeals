@@ -1,9 +1,14 @@
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import { UserContext } from "../components/userContext";
 
 export function LoginPage(){
 
     const loginFormRef = useRef(null);
     const [message, setMessage] = useState("");
+    const { login } = useContext(UserContext);
+    const navigate = useNavigate();
+
 
     async function onSignIn(event) {
         event.preventDefault();
@@ -22,68 +27,118 @@ export function LoginPage(){
             setMessage("Sign in failed: " + errorData.msg);
             return;
         }
+
+        const userData = await res.json();
+        login(userData);
         setMessage("Sign in successful!");
-        // Implement redirection or further actions after successful sign-in
+        navigate("/");
     }
+
 
   
-    async function onSignUp(event) {
-        event.preventDefault();
-        const formData = new FormData(loginFormRef.current);
+    // async function onSignUp(event) {
+    //     event.preventDefault();
+    //     const formData = new FormData(loginFormRef.current);
 
-        const res = await fetch("/api/signup", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(Object.fromEntries(formData.entries())),
-        });
+    //     const res = await fetch("/api/signup", {
+    //         method: "POST",
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //         },
+    //         body: JSON.stringify(Object.fromEntries(formData.entries())),
+    //     });
 
-        if (!res.ok) {
-            const errorData = await res.json();
-            setMessage("Signup failed: " + errorData.msg);
-            return;
-        }
-        setMessage("Signup successful, please log in.");
-        // Implement further actions after successful sign-up, like clearing the form
-    }
+    //     if (!res.ok) {
+    //         const errorData = await res.json();
+    //         setMessage("Signup failed: " + errorData.msg);
+    //         return;
+    //     }
+    //     setMessage("Signup successful, please log in.");
+    // }
 
     return (
         <>
             <div className="form-signin w-100 m-auto">
                 <form ref={loginFormRef} onSubmit={onSignIn}>
-                    <h1 className="h3 mb-3 fw-normal">Please sign in or sign up</h1>
-                    <div className="form-floating">
+                    <h1 className="h3 mb-3 fw-normal">Please Sign In</h1>
+                    <label htmlFor="username">Username</label>
+                    <div className="form-group mb-3">
                         <input
                             type="text"
+                            name="username"
+                            placeholder="username"
                             className="form-control"
                             id="floatingInput"
-                            placeholder="username"
-                            name="username"
+                            required
                         />
-                        <label htmlFor="floatingInput">Username</label>
                     </div>
-                    <div className="form-floating">
+                    <label htmlFor="password">Password</label>
+                    <div className="form-group mb-3">
                         <input
                             type="password"
+                            name="password"
+                            placeholder="password"
                             className="form-control"
                             id="floatingPassword"
-                            placeholder="Password"
-                            name="password"
+                            required
                         />
-                        <label htmlFor="floatingPassword">Password</label>
                     </div>
                     <div className="mb-2">
-                        <button className="btn btn-primary w-50 py-2" type="submit">
-                            Sign in
-                        </button>
-                        <button className="btn btn-secondary w-50 py-2" type="button" onClick={onSignUp}>
-                            Sign Up
+                        <button className="btn btn-secondary w-30 py-2" type="submit">
+                            Sign In
                         </button>
                     </div>
                     {message && <div className="alert alert-info">{message}</div>}
                 </form>
+                <div>
+                <p>Don't have an account?</p>
+                    <Link to="/signup" className="btn btn-secondary w-30 py-2">
+                        Sign Up
+                    </Link>
+                </div>
             </div>
         </>
     );
 }
+
+
+
+// return (
+//     <>
+//         <div className="form-signin w-100 m-auto">
+//             <form ref={loginFormRef} onSubmit={onSignIn}>
+//                 <h1 className="h3 mb-3 fw-normal">Please Sign In</h1>
+//                 <div className="form-floating">
+//                     <input
+//                         type="text"
+//                         className="form-control"
+//                         id="floatingInput"
+//                         placeholder="username"
+//                         name="username"
+//                     />
+//                     <label htmlFor="floatingInput">Username</label>
+//                 </div>
+//                 <div className="form-floating">
+//                     <input
+//                         type="password"
+//                         className="form-control"
+//                         id="floatingPassword"
+//                         placeholder="Password"
+//                         name="password"
+//                     />
+//                     <label htmlFor="floatingPassword">Password</label>
+//                 </div>
+//                 <div className="mb-2">
+//                     <button className="btn btn-primary w-50 py-2" type="submit">
+//                         Sign in
+//                     </button>
+//                     <button className="btn btn-secondary w-50 py-2" type="button" onClick={onSignUp}>
+//                         Sign Up
+//                     </button>
+//                 </div>
+//                 {message && <div className="alert alert-info">{message}</div>}
+//             </form>
+//         </div>
+//     </>
+// );
+// }

@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { createContext, useState, useEffect } from 'react';
 
-export function GetUser() {
+export const UserContext = createContext();
+
+export const UserProvider = ({ children }) => {
     const [user, setUser] = useState(null);
-    const [error, setError] = useState(null); 
-    const navigate = useNavigate()
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -22,19 +22,28 @@ export function GetUser() {
         fetchUser();
     }, []);
 
+    const login = (userData) => {
+        setUser(userData);
+        alert("You have been successfully logged in!");
+    };
 
-    async function onLogout(redirectTo = "/login") {
+    const logout = async () => {
         try {
             const response = await fetch("/api/logout", { method: "POST" });
             if (!response.ok) {
                 throw new Error("Error logging out");
             }
             setUser(null);
-            navigate(redirectTo);
+            localStorage.removeItem('userToken'); // Clear any client-side session data
+            alert("You have been logged out.");
         } catch (err) {
             setError(err.message);
         }
-    }
+    };
 
-    return { user, onLogout, error };
-}
+    return (
+        <UserContext.Provider value={{ user, login, logout, error }}>
+            {children}
+        </UserContext.Provider>
+    );
+};

@@ -1,24 +1,19 @@
+import React, { useContext } from 'react';
 import { Link } from "react-router-dom";
-import { GetUser } from "./GetUser";
+import { UserContext } from './userContext';
 
 export function LoginLink() {
-    const { user, onLogout, error } = GetUser();
+    const { user, logout } = useContext(UserContext);
 
     return (
-        <>
-            {error && <div className="alert alert-danger">{error}</div>}
+        <div className="login">
             {user ? (
-                <div>
-                    Welcome {user}{" "}
-                    <button className="nav-link" onClick={onLogout}>
-                        Logout
-                    </button>
-                </div>
+                <>
+                    <button onClick={logout} className="btn btn-primary">Logout</button>
+                </>
             ) : (
-                <Link className="nav-link" to="/login">
-                    Login
-                </Link>
+                <Link to="/login" className="btn btn-primary">Login</Link>
             )}
-        </>
+        </div>
     );
 }

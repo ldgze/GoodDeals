@@ -1,4 +1,5 @@
 import { Routes, Route, Link } from "react-router-dom";
+import { useContext } from "react";
 import { CreateDeal } from "./pages/CreateDeal";
 import { DealDetail } from "./pages/DealDetail";
 import { EditDeal } from "./pages/EditDeal";
@@ -7,6 +8,8 @@ import { AppNavBar } from "./components/AppNavBar";
 import { AppFooter } from "./components/AppFooter";
 import { DisplayPage } from "./pages/DisplayPage";
 import { LoginPage } from "./pages/LoginPage";
+import { SignUpPage } from "./pages/SignUpPage";
+import { LoginLink } from './components/LoginLink';
 
 import "./asset/style/App.css";
 
@@ -32,10 +35,8 @@ export default function App() {
               placeholder="Search"/>
             <button className="search-button">Search</button>
         </div>
-        <div className="login">
-              <Link to="/login" className="btn btn-primary">Login</Link>
-      </div>
-      </div>
+        <LoginLink />
+        </div>
           </div>
         </div>
       </div>
@@ -64,6 +65,7 @@ export default function App() {
           element={<DisplayPage category="/category/electronics" />}
         />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignUpPage />} />
       </Routes>
       <AppFooter />
     </div>

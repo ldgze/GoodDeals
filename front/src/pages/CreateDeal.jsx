@@ -1,8 +1,9 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect, useContext} from "react";
 import { useNavigate } from "react-router-dom";
 import "../asset/style/CreateDeal.css";
 
-import {GetUser} from "../components/GetUser";
+// import {GetUser} from "../components/GetUser";
+import { UserContext } from "../components/userContext";
 
 export function CreateDeal() {
   const [dealData, setDealData] = useState({
@@ -17,7 +18,9 @@ export function CreateDeal() {
 
   const [error, setError] = useState(""); 
 
-  const { user } = GetUser();
+  // const { user } = GetUser();
+
+  const { user } = useContext(UserContext);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -28,6 +31,7 @@ export function CreateDeal() {
       setDealData((prevData) => ({ ...prevData, userId: user.id }));
     }
   }, [user, navigate]);
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -54,21 +58,6 @@ export function CreateDeal() {
     navigate(`/deals/id/${dealId}`);
   };
 
-
-  //   if (response.ok) {
-  //     const responseData = await response.json();
-  //     alert("Deal Created!");
-  //     console.log("Success:", responseData);
-  //     const dealId = responseData.dealId;
-  //     navigate(`/deals/id/${dealId}`);
-  //   } else {
-  //     console.error("Error:", response.statusText);
-  //     response
-  //       .json()
-  //       .then((json) => console.log(json))
-  //       .catch((e) => console.log("Error parsing JSON:", e));
-  //   }
-  // };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -163,3 +152,21 @@ export function CreateDeal() {
 }
 
 CreateDeal.propTypes = {};
+
+
+
+
+  //   if (response.ok) {
+  //     const responseData = await response.json();
+  //     alert("Deal Created!");
+  //     console.log("Success:", responseData);
+  //     const dealId = responseData.dealId;
+  //     navigate(`/deals/id/${dealId}`);
+  //   } else {
+  //     console.error("Error:", response.statusText);
+  //     response
+  //       .json()
+  //       .then((json) => console.log(json))
+  //       .catch((e) => console.log("Error parsing JSON:", e));
+  //   }
+  // };
