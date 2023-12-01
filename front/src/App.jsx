@@ -1,5 +1,4 @@
 import { Routes, Route, Link } from "react-router-dom";
-import { useContext } from "react";
 import { CreateDeal } from "./pages/CreateDeal";
 import { DealDetail } from "./pages/DealDetail";
 import { EditDeal } from "./pages/EditDeal";

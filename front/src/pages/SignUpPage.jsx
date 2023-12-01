@@ -26,6 +26,7 @@ export function SignUpPage(){
             },
             body: JSON.stringify(formData),
         });
+        console.log(formData);
 
         if (res.ok) {
             alert('Account created successfully!');
