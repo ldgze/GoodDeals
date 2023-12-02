@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useContext} from "react";
 import { useNavigate } from "react-router-dom";
 import "../asset/style/CreateDeal.css";
-
-// import {GetUser} from "../components/GetUser";
 import { UserContext } from "../components/userContext";
 
 export function CreateDeal() {
@@ -12,23 +10,21 @@ export function CreateDeal() {
     weblink: "",
     imagelink: "",
     category: "",
-    like: 0,
-    userId: "",
+    like: 200,
+    creatorId: "",
   });
 
   const [error, setError] = useState(""); 
-
-  // const { user } = GetUser();
-
   const { user } = useContext(UserContext);
   const navigate = useNavigate();
 
   useEffect(() => {
+    console.log("Current user in context666:", user);
     if (!user) {
       alert("You need to be logged in to create a deal.");
       navigate("/login");
     } else {
-      setDealData((prevData) => ({ ...prevData, userId: user.id }));
+      setDealData((prevData) => ({ ...prevData, creatorId: user.id }));
     }
   }, [user, navigate]);
 

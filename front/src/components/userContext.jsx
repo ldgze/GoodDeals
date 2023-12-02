@@ -14,13 +14,30 @@ export const UserProvider = ({ children }) => {
                     throw new Error("Error getting current user");
                 }
                 const data = await response.json();
-                setUser(data.username);
+                console.log("Fetched user data:", data);
+                setUser({ email: data.email, id: data.id });
             } catch (err) {
                 setError(err.message);
             }
         };
         fetchUser();
     }, []);
+
+    // useEffect(() => {
+    //     const fetchUser = async () => {
+    //         try {
+    //             const response = await fetch("/api/getUser");
+    //             if (!response.ok) {
+    //                 throw new Error("Error getting current user");
+    //             }
+    //             const data = await response.json();
+    //             setUser(data.username);
+    //         } catch (err) {
+    //             setError(err.message);
+    //         }
+    //     };
+    //     fetchUser();
+    // }, []);
 
     const login = (userData) => {
         setUser(userData);

@@ -116,6 +116,11 @@ function MyMongoDB() {
     return await db.collection(CollName_User).insertOne(user);
   };
 
+  myDB.getUserById = async (id) => {
+    const db = await connect();
+    return await db.collection(CollName_User).findOne({ _id: new ObjectId(id) });
+  };
+
   myDB.getUserByUsername = async (username) => {
     const db = await connect();
     return await db.collection(CollName_User).findOne({ username });

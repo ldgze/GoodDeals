@@ -13,7 +13,7 @@ router.post("/api/login/password", async (req, res, next) => {
 
             req.logIn(user, function(err) {
                 if (err) throw err;
-                return res.status(200).json({ ok: true, username: user.username });
+                return res.status(200).json({ ok: true, email: user.email, id: user.id});
             });
         })(req, res, next);
     } catch (error) {
@@ -25,7 +25,7 @@ router.post("/api/logout", async (req, res) => {
     try {
         req.logout(function (err) {
             if (err) throw err;
-            res.status(200).json({ username: null, msg: "Logged out", ok: true });
+            res.status(200).json({ email: null, msg: "Logged out", ok: true });
         });
     } catch (error) {
         res.status(500).json({ error: error.message });
@@ -34,22 +34,25 @@ router.post("/api/logout", async (req, res) => {
 
 router.get("/api/getUser", async (req, res) => {
     try {
-        console.log("getUser", req.user);
-        res.status(200).json({ email: req.user?.email, username: req.user?.username });
+        if (req.isAuthenticated() && req.user) {
+            res.status(200).json({ ok: true, email: req.user.email, id: req.user.id  });
+        } else {
+            res.status(401).json({ message: "User not authenticated" });
+        }
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
 });
-  
+
 // router.get("/api/getUser", async (req, res) => {
 //     try {
 //         console.log("getUser", req.user);
-//         res.status(200).json({ username: req.user?.username });
+//         res.status(200).json({ id: req.user?._id, email: req.user?.email, username: req.user?.username });
 //     } catch (error) {
 //         res.status(500).json({ error: error.message });
 //     }
 // });
-
+  
 router.post("/api/signup", async (req, res) => {
     try {
         const user = await myDB.getUserByEmail(req.body.email);

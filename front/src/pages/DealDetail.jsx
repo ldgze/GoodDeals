@@ -1,16 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useParams, Link } from "react-router-dom";
 import { DeleteDeal } from "../pages/DeleteDeal";
+import { UserContext } from "../components/userContext";
+import { Comments } from "../pages/Comments";
 
 import "../asset/style/DealDetail.css";
 
 export function DealDetail() {
   const [deal, setDeal] = useState(null);
-  const [comments, setComments] = useState([]);
-  const [newComment, setNewComment] = useState("");
   const [liked, setLiked] = useState(false);
   const [likes, setLikes] = useState(0);
   const { dealId } = useParams();
+  const { user } = useContext(UserContext);
 
   useEffect(() => {
     async function fetchDeal() {
@@ -23,62 +24,11 @@ export function DealDetail() {
       }
     }
     fetchDeal();
-    async function fetchComments() {
-      const response = await fetch(`/api/deals/id/${dealId}/comments`);
-      if (response.ok) {
-        const data = await response.json();
-        setComments(data);
-      }
-    }
-    fetchComments();
   }, [dealId]);
 
   if (!deal) {
     return <div>Loading...</div>;
   }
-
-  const submitComment = async () => {
-    if (newComment) {
-      try {
-        const response = await fetch(`/api/deals/id/${dealId}/comments`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ text: newComment }),
-        });
-
-        if (response.ok) {
-          const updatedResponse = await fetch(
-            `/api/deals/id/${dealId}/comments`,
-          );
-          if (updatedResponse.ok) {
-            const updatedData = await updatedResponse.json();
-            setComments(updatedData);
-          }
-
-          setNewComment("");
-        }
-      } catch (error) {
-        console.error("Error:", error);
-      }
-    }
-  };
-
-  const deleteComment = async (commentId) => {
-    const confirmed = window.confirm(
-      "Are you sure you want to delete this comment?",
-    );
-    if (confirmed) {
-      const response = await fetch(`/api/deals/comments/${commentId}`, {
-        method: "DELETE",
-      });
-
-      if (response.ok) {
-        setComments(comments.filter((comment) => comment._id !== commentId));
-      }
-    }
-  };
 
   const handleLike = async () => {
     if (!liked) {
@@ -133,6 +83,8 @@ export function DealDetail() {
     }
   };
 
+  const isCreator = user && user.id === deal.creatorId;
+
   return (
     <div className="container-fluid">
       <div className="card">
@@ -142,52 +94,21 @@ export function DealDetail() {
           <p className="card-text">{deal.description}</p>
           <hr className="solid"></hr>
           <div className="card-btn">
-            {/* <button
-              onClick={handleLike}
-              disabled={liked}
-              className="btn btn-success "
-            >
-              Like ({deal.like})
-            </button> */}
               <span onClick={handleLike} className="star-section">
-                {/* <span className={`star${liked ? 'liked' : ''}`}>{liked ? '⭐' : '☆'}</span> {deal.like} */}
-                
                 {liked ? <span className="fa fa-star checked"></span> : <span className="fa fa-star-o unchecked"></span>}{deal.like}
                 </span>
+              {isCreator && (
+                <>
             <Link
               to={`/deals/edit/id/${dealId}`}
-              className="btn btn-secondary "
-            >
+              className="btn btn-secondary ">
               Edit
             </Link>
             <DeleteDeal dealId={dealId} />
+            </>)}
+            <p>postby:{deal.creatorId} </p>
           </div>
-          <div className="comment-form">
-              <form>
-                <h3>Write Comments</h3>
-                <textarea
-                  value={newComment}
-                  onChange={(e) => setNewComment(e.target.value)}
-                  placeholder="Write your comment here"
-                  required
-                />
-                <button onClick={submitComment}>Submit Comment</button>
-              </form>
-            </div>
-            
-          <section className="comment-section">
-            <h3>Comments</h3>
-            <hr className="solid"></hr>
-            {comments.map((comment, index) => (
-              <div key={index} className="comments">
-                <p>{comment.text}</p>
-                <button onClick={() => deleteComment(comment._id)}>
-                  Delete Comment
-                </button>
-              </div>
-            ))}
-            
-          </section>
+          <Comments dealId={dealId} user={user} />
         </div>
       </div>
     </div>
