@@ -18,12 +18,17 @@ const __dirname = dirname(__filename);
 
 const app = express();
 
-const myStrategy = new LocalStrategy(async function verify(username, password, cb) {
+const myStrategy = new LocalStrategy(
+  {
+    usernameField: 'email',
+    passwordField: 'password',
+  },
+  async function verify(email, password, cb) {
   try {
-    const user = await myDB.getUserByUsername(username);
+    const user = await myDB.getUserByEmail(email);
 
     if (!user) {
-      return cb(null, false, { message: "Incorrect username or password" });
+      return cb(null, false, { message: "Incorrect email or password" });
     }
 
     crypto.pbkdf2(password, Buffer.from(user.salt, "hex"), 310000, 32, "sha256", function (err, hashedPassword) {
@@ -32,9 +37,9 @@ const myStrategy = new LocalStrategy(async function verify(username, password, c
       }
 
       if (!crypto.timingSafeEqual(Buffer.from(user.hashedPassword, "hex"), hashedPassword)) {
-        return cb(null, false, { message: "Incorrect username or password" });
+        return cb(null, false, { message: "Incorrect email or password" });
       }
-      cb(null, { id: user.id, username: username }); 
+      cb(null, { id: user.id, email: email }); 
     });
   } catch (err) {
     cb(err);
@@ -60,9 +65,15 @@ app.use(
 );
 passport.serializeUser(function (user, cb) {
   process.nextTick(function () {
-    cb(null, { id: user.id, username: user.username });
+    cb(null, { id: user.id, email: user.email });
   });
 });
+
+// passport.serializeUser(function (user, cb) {
+//   process.nextTick(function () {
+//     cb(null, { id: user.id, username: user.username });
+//   });
+// });
 
 passport.deserializeUser(function (user, cb) {
   process.nextTick(function () {
@@ -83,3 +94,28 @@ app.get("*", (req, res) => {
 
 myDB.connect();
 export default app;
+
+
+// const myStrategy = new LocalStrategy(
+//   async function verify(username, password, cb) {
+//   try {
+//     const user = await myDB.getUserByUsername(username);
+
+//     if (!user) {
+//       return cb(null, false, { message: "Incorrect username or password" });
+//     }
+
+//     crypto.pbkdf2(password, Buffer.from(user.salt, "hex"), 310000, 32, "sha256", function (err, hashedPassword) {
+//       if (err) {
+//         return cb(err);
+//       }
+
+//       if (!crypto.timingSafeEqual(Buffer.from(user.hashedPassword, "hex"), hashedPassword)) {
+//         return cb(null, false, { message: "Incorrect username or password" });
+//       }
+//       cb(null, { id: user.id, username: username }); 
+//     });
+//   } catch (err) {
+//     cb(err);
+//   }
+// });

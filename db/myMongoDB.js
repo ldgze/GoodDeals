@@ -121,6 +121,10 @@ function MyMongoDB() {
     return await db.collection(CollName_User).findOne({ username });
   };
 
+  myDB.getUserByEmail = async (email) => {
+    const db = await connect();
+    return await db.collection(CollName_User).findOne({ email });
+  };
 
   myDB.closeConnection = async () => {
     if (client.isConnected()) {

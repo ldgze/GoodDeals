@@ -31,21 +31,30 @@ router.post("/api/logout", async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 });
-  
+
 router.get("/api/getUser", async (req, res) => {
     try {
         console.log("getUser", req.user);
-        res.status(200).json({ username: req.user?.username });
+        res.status(200).json({ email: req.user?.email, username: req.user?.username });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
 });
+  
+// router.get("/api/getUser", async (req, res) => {
+//     try {
+//         console.log("getUser", req.user);
+//         res.status(200).json({ username: req.user?.username });
+//     } catch (error) {
+//         res.status(500).json({ error: error.message });
+//     }
+// });
 
 router.post("/api/signup", async (req, res) => {
     try {
-        const user = await myDB.getUserByUsername(req.body.username);
+        const user = await myDB.getUserByEmail(req.body.email);
         if (user) {
-            return res.status(400).json({ ok: false, msg: "Username already exists" });
+            return res.status(400).json({ ok: false, msg: "Email already exists" });
         }
 
         var salt = crypto.randomBytes(16);

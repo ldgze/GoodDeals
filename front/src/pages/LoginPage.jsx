@@ -61,12 +61,12 @@ export function LoginPage(){
             <div className="form-signin w-100 m-auto">
                 <form ref={loginFormRef} onSubmit={onSignIn}>
                     <h1 className="h3 mb-3 fw-normal">Please Sign In</h1>
-                    <label htmlFor="username">Username</label>
+                    <label htmlFor="email">Email</label>
                     <div className="form-group mb-3">
                         <input
-                            type="text"
-                            name="username"
-                            placeholder="username"
+                            type="email"
+                            name="email"
+                            placeholder="email"
                             className="form-control"
                             id="floatingInput"
                             required
