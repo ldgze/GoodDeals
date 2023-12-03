@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import { DeleteDeal } from "../pages/DeleteDeal";
 import { UserContext } from "../components/userContext";
 import { Comments } from "../pages/Comments";
+import { DealLikes}from './DealLikes';
 
 import "../asset/style/DealDetail.css";
 
@@ -31,6 +32,11 @@ export function DealDetail() {
   }
 
   const handleLike = async () => {
+    if (!user) {
+      alert("You must be logged in to like a deal.");
+      return;
+    }
+
     if (!liked) {
       const updatedDeal = { ...deal };
       updatedDeal.like += 1;
@@ -94,6 +100,7 @@ export function DealDetail() {
           <p className="card-text">{deal.description}</p>
           <hr className="solid"></hr>
           <div className="card-btn">
+          {/* <DealLikes dealId={dealId} initialLikes={deal.like} /> */}
               <span onClick={handleLike} className="star-section">
                 {liked ? <span className="fa fa-star checked"></span> : <span className="fa fa-star-o unchecked"></span>}{deal.like}
                 </span>

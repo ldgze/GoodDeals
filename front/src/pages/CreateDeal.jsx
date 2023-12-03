@@ -11,6 +11,7 @@ export function CreateDeal() {
     imagelink: "",
     category: "",
     like: 200,
+    likedUsers: [],
     creatorId: "",
   });
 

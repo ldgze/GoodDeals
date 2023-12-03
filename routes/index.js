@@ -86,6 +86,33 @@ router.get("/api/deals/category/:categoryName", async (req, res) => {
   }
 });
 
+
+router.put("/api/deals/id/:dealId/like", async function (req, res) {
+
+    const dealId = req.params.dealId;
+    const userId = req.body.userId;
+    
+    try {
+        const deal = await myDB.getDealById(dealId);
+        if (!deal) {
+          return res.status(404).json({ message: "Deal not found" });
+        }
+        const userIndex = deal.likedUsers.indexOf(userId);
+        if (userIndex === -1) {
+          deal.like++; 
+          deal.likedUsers.push(userId); 
+        } else {
+          deal.like--; 
+          deal.likedUsers.splice(userIndex, 1); 
+        }
+        await deal.save();
+        res.json({ like: deal.like, userLiked: userIndex === -1 });
+    } catch (error) {
+      res.status(500).json({ message: "Internal server error" });
+    }
+    });
+
+
 router.post("/api/deals/id/:dealId/comments", async (req, res) => {
   try {
     const { dealId } = req.params;
@@ -94,8 +121,6 @@ router.post("/api/deals/id/:dealId/comments", async (req, res) => {
     if (!req.isAuthenticated() || req.user.id !== userId) {
       return res.status(403).json({ message: "Unauthorized" });
     }
-
-    // const comment = { ...req.body, dealId };
 
     const comment = {
       text,
