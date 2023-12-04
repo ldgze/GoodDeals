@@ -15,7 +15,7 @@ export const UserProvider = ({ children }) => {
                 }
                 const data = await response.json();
                 console.log("Fetched user data:", data);
-                setUser({ email: data.email, id: data.id });
+                setUser({ username:data.name, email: data.email, id: data.id });
             } catch (err) {
                 setError(err.message);
             }

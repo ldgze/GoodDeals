@@ -27,6 +27,7 @@ function MyMongoDB() {
 
   myDB.createDeal = async (deal) => {
     const db = await connect();
+    console.log("indb", deal);
     return await db.collection(CollName_Deal).insertOne(deal);
   };
 

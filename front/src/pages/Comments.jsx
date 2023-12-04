@@ -10,6 +10,7 @@ export function Comments({ dealId, user }) {
         if (response.ok) {
           const data = await response.json();
           setComments(data);
+          console.log("in comment component", comments)
         }
       }
       fetchComments();
@@ -25,8 +26,10 @@ export function Comments({ dealId, user }) {
           try {
             const commentData = {
                 text: newComment,
-                userId: user.id
+                userId: user.id,
+                username: user.username
               };
+              console.log("in submit", commentData)
         
             const response = await fetch(`/api/deals/id/${dealId}/comments`, {
               method: "POST",
@@ -122,7 +125,7 @@ export function Comments({ dealId, user }) {
        <hr className="solid"></hr>
         {comments.map((comment, index) => (
           <div key={index} className="comments">
-            <p>{comment.text}</p>
+            <p>{comment.username}: {comment.text}</p>
             {user && user.id === comment.userId && (
               <button onClick={() => deleteComment(comment._id)}>
                 Delete Comment

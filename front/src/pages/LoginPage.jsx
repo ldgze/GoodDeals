@@ -1,5 +1,5 @@
 import React, { useContext, useRef, useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, redirect } from "react-router-dom";
 import { UserContext } from "../components/userContext";
 
 export function LoginPage(){
@@ -32,6 +32,7 @@ export function LoginPage(){
         login(userData);
         setMessage("Sign in successful!");
         navigate("/");
+        // redirect("/");
     }
 
     return (

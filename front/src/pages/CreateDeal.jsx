@@ -13,6 +13,7 @@ export function CreateDeal() {
     like: 200,
     likedUsers: [],
     creatorId: "",
+    creatorName: "",
   });
 
   const [error, setError] = useState(""); 
@@ -25,13 +26,15 @@ export function CreateDeal() {
       alert("You need to be logged in to create a deal.");
       navigate("/login");
     } else {
-      setDealData((prevData) => ({ ...prevData, creatorId: user.id }));
+      setDealData((prevData) => ({ ...prevData, creatorId: user.id, creatorName: user.username }));
     }
   }, [user, navigate]);
 
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    console.log("in submit", dealData);
 
     const response = await fetch("/api/deals/deal", {
       method: "POST",

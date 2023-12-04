@@ -16,15 +16,14 @@ router.post("/api/deals/deal", async (req, res) => {
   console.log("Deal data:", req.body);
   console.log("User data:", req.user);
 
-  const newDeal = {
-    ...req.body,
-    creatorId: req.user.id
-};
-console.log(req.user.id)
+//   const newDeal = {
+//     ...req.body,
+//     creatorId: req.user.id
+// };
 
 
   try {
-    const result = await myDB.createDeal(newDeal);
+    const result = await myDB.createDeal(req.body);
     res.status(201).json({ success: true, dealId: result.insertedId });
   } catch (error) {
     console.error(error);
@@ -116,16 +115,20 @@ router.put("/api/deals/id/:dealId/like", async function (req, res) {
 router.post("/api/deals/id/:dealId/comments", async (req, res) => {
   try {
     const { dealId } = req.params;
-    const { text, userId } = req.body;
+    const { text, userId, username } = req.body;
+    console.log(req.params)
+    console.log(req.body)
+    console.log(req.user)
 
-    if (!req.isAuthenticated() || req.user.id !== userId) {
+    if (!req.isAuthenticated()) {
       return res.status(403).json({ message: "Unauthorized" });
     }
 
     const comment = {
       text,
       userId,
-      dealId
+      dealId,
+      username
     };
 
     const result = await myDB.createComment(comment);

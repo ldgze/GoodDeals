@@ -113,7 +113,7 @@ export function DealDetail() {
             </Link>
             <DeleteDeal dealId={dealId} />
             </>)}
-            <p>postby:{deal.creatorId} </p>
+            <p>postby:{deal.creatorName} </p>
           </div>
           <Comments dealId={dealId} user={user} />
         </div>
