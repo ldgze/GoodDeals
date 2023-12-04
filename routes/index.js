@@ -90,21 +90,29 @@ router.put("/api/deals/id/:dealId/like", async function (req, res) {
 
     const dealId = req.params.dealId;
     const userId = req.body.userId;
+    console.log(req.params, req.body)
     
     try {
+      
         const deal = await myDB.getDealById(dealId);
+        console.log(deal)
         if (!deal) {
           return res.status(404).json({ message: "Deal not found" });
         }
+        console.log(77777777777777777777)
         const userIndex = deal.likedUsers.indexOf(userId);
+        console.log(userIndex)
         if (userIndex === -1) {
           deal.like++; 
           deal.likedUsers.push(userId); 
+          console.log(deal)
         } else {
           deal.like--; 
           deal.likedUsers.splice(userIndex, 1); 
         }
-        await deal.save();
+        // await deal.save();
+        const result = await myDB.updateDeal(deal._id, deal);
+        console.log(deal)
         res.json({ like: deal.like, userLiked: userIndex === -1 });
     } catch (error) {
       res.status(500).json({ message: "Internal server error" });
