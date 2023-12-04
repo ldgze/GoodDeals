@@ -50,8 +50,8 @@ export function HomePage() {
                 </div>
                 <div className="col-md-9 text-center">
                   <h3>{post.title}</h3>
-                  <p>Likes: {post.like}</p>
                   <p className="post-content">{post.description}</p>
+                  <p className="fa fa-star likechecked"> Likes: {post.like}</p>
                   <div className="post-meta">
                     <p className="post-category">Category: {post.category}</p>
                   </div>
