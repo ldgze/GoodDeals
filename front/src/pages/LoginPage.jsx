@@ -1,5 +1,5 @@
 import React, { useContext, useRef, useState } from "react";
-import { useNavigate, Link, redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { UserContext } from "../components/userContext";
 
 export function LoginPage(){
@@ -7,8 +7,6 @@ export function LoginPage(){
     const loginFormRef = useRef(null);
     const [message, setMessage] = useState("");
     const { login } = useContext(UserContext);
-    const navigate = useNavigate();
-
 
     async function onSignIn(event) {
         event.preventDefault();
@@ -24,15 +22,14 @@ export function LoginPage(){
 
         if (!res.ok) {
             const errorData = await res.json();
-            setMessage("Sign in failed: " + errorData.msg);
+            setMessage("Sign in failed: Email or Password is not correct.");
             return;
         }
 
         const userData = await res.json();
         login(userData);
         setMessage("Sign in successful!");
-        navigate("/");
-        // redirect("/");
+        window.location.href = '/';
     }
 
     return (

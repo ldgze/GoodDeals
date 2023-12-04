@@ -21,7 +21,6 @@ export function CreateDeal() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log("Current user in context666:", user);
     if (!user) {
       alert("You need to be logged in to create a deal.");
       navigate("/login");
@@ -152,21 +151,3 @@ export function CreateDeal() {
 }
 
 CreateDeal.propTypes = {};
-
-
-
-
-  //   if (response.ok) {
-  //     const responseData = await response.json();
-  //     alert("Deal Created!");
-  //     console.log("Success:", responseData);
-  //     const dealId = responseData.dealId;
-  //     navigate(`/deals/id/${dealId}`);
-  //   } else {
-  //     console.error("Error:", response.statusText);
-  //     response
-  //       .json()
-  //       .then((json) => console.log(json))
-  //       .catch((e) => console.log("Error parsing JSON:", e));
-  //   }
-  // };

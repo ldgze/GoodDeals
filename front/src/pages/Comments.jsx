@@ -55,37 +55,6 @@ export function Comments({ dealId, user }) {
           }
         }
       };
-
-
-
-    // const submitComment = async () => {
-    //     if (newComment) {
-     
-    //       try {
-    //         const response = await fetch(`/api/deals/id/${dealId}/comments`, {
-    //           method: "POST",
-    //           headers: {
-    //             "Content-Type": "application/json",
-    //           },
-    //           body: JSON.stringify({ text: newComment }),
-    //         });
-    
-    //         if (response.ok) {
-    //           const updatedResponse = await fetch(
-    //             `/api/deals/id/${dealId}/comments`,
-    //           );
-    //           if (updatedResponse.ok) {
-    //             const updatedData = await updatedResponse.json();
-    //             setComments(updatedData);
-    //           }
-    
-    //           setNewComment("");
-    //         }
-    //       } catch (error) {
-    //         console.error("Error:", error);
-    //       }
-    //     }
-    //   };
     
       const deleteComment = async (commentId) => {
         const confirmed = window.confirm(
@@ -101,7 +70,6 @@ export function Comments({ dealId, user }) {
           }
         }
       };
-    
 
   return (
     <div>

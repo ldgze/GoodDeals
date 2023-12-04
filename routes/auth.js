@@ -13,7 +13,7 @@ router.post("/api/login/password", async (req, res, next) => {
 
             req.logIn(user, function(err) {
                 if (err) throw err;
-                return res.status(200).json({ ok: true, email: user.email, id: user.id});
+                return res.status(200).json({ ok: true, email: user.email});
             });
         })(req, res, next);
     } catch (error) {
@@ -32,34 +32,18 @@ router.post("/api/logout", async (req, res) => {
     }
 });
 
+
 router.get("/api/getUser", async (req, res) => {
-    console.log(11111111111111111111);
     try {
         if (req.isAuthenticated() && req.user) {
-            console.log(2222222222222222222222);
-            console.log(req.user);
             const userId = await myDB.getUserByEmail(req.user.email);
-            console.log("this may be user id:", userId)
-            console.log("this may be user id:", userId._id)
             res.status(200).json({id:userId._id,email:req.user.email, name:userId.username});
-        } else {
-            console.log(333333333333333333);
-            res.status(401).json({ message: "User not authenticated" });
         }
     } catch (error) {
-        console.log(44444444444444444444444444);
         res.status(500).json({ error: error.message });
     }
 });
 
-// router.get("/api/getUser", async (req, res) => {
-//     try {
-//         console.log("getUser", req.user);
-//         res.status(200).json({ id: req.user?._id, email: req.user?.email, username: req.user?.username });
-//     } catch (error) {
-//         res.status(500).json({ error: error.message });
-//     }
-// });
   
 router.post("/api/signup", async (req, res) => {
     try {
