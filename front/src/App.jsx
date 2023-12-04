@@ -9,10 +9,22 @@ import { DisplayPage } from "./pages/DisplayPage";
 import { LoginPage } from "./pages/LoginPage";
 import { SignUpPage } from "./pages/SignUpPage";
 import { LoginLink } from './components/LoginLink';
+import { SearchBox } from './components/SearchBox';
 
 import "./asset/style/App.css";
 
 export default function App() {
+
+  // const [searchResults, setSearchResults] = useState([]);
+
+  // const handleSearch = async (searchTerm) => {
+  //   // Implement the search logic here
+  //   // This could be an API call or local data filtering
+  //   const results = await performSearch(searchTerm);
+  //   setSearchResults(results);
+  // };
+
+  
 
   return (
     <div>
@@ -34,6 +46,7 @@ export default function App() {
               placeholder="Search"/>
             <button className="search-button">Search</button>
         </div>
+        {/* <SearchBox onSearch={handleSearch} /> */}
         <LoginLink />
         </div>
           </div>
@@ -70,3 +83,5 @@ export default function App() {
     </div>
   );
 }
+
+
