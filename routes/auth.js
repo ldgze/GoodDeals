@@ -6,6 +6,17 @@ import myDB from "../db/myMongoDB.js";
 const router = express.Router();
 
 router.post("/api/login/password", async (req, res, next) => {
+    console.log(req.body);
+    const userEmail = req.body.email;
+    let userinfo;
+    try {
+        if (userEmail) {
+            userinfo = await myDB.getUserByEmail(userEmail);
+            // res.status(200).json({id:userId._id,email:req.user.email, name:userId.username});
+        }
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
     try {
         passport.authenticate("local", (err, user, info) => {
             if (err) throw err;
@@ -13,7 +24,8 @@ router.post("/api/login/password", async (req, res, next) => {
 
             req.logIn(user, function(err) {
                 if (err) throw err;
-                return res.status(200).json({ ok: true, email: user.email});
+                console.log("in api", user);
+                return res.status(200).json(userinfo);
             });
         })(req, res, next);
     } catch (error) {

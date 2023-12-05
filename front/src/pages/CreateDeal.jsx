@@ -25,6 +25,7 @@ export function CreateDeal() {
       alert("You need to be logged in to create a deal.");
       navigate("/login");
     } else {
+      console.log("in useeEffect user", user)
       setDealData((prevData) => ({ ...prevData, creatorId: user.id, creatorName: user.username }));
     }
   }, [user, navigate]);
