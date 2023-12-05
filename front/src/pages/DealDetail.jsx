@@ -9,8 +9,6 @@ import "../asset/style/DealDetail.css";
 
 export function DealDetail() {
   const [deal, setDeal] = useState(null);
-  // const [liked, setLiked] = useState(false);
-  const [likes, setLikes] = useState(0);
   const { dealId } = useParams();
   const { user } = useContext(UserContext);
 
@@ -31,69 +29,9 @@ export function DealDetail() {
     return <div>Loading...</div>;
   }
 
-  // const handleLike = async () => {
-  //   if (!user) {
-  //     alert("You must be logged in to like a deal.");
-  //     return;
-  //   }
-
-  //   if (!liked) {
-  //     const updatedDeal = { ...deal };
-  //     updatedDeal.like += 1;
-
-  //     try {
-  //       const response = await fetch(`/api/deals/id/${dealId}`, {
-  //         method: "PUT",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //         body: JSON.stringify({ like: updatedDeal.like }),
-  //       });
-
-  //       if (response.ok) {
-  //         alert("Deal liked successfully!");
-  //         setDeal(updatedDeal);
-  //         setLiked(true);
-  //         setLikes(updatedDeal.like);
-  //       } else {
-  //         console.error("Error updating deal");
-  //       }
-  //     } catch (error) {
-  //       console.error("Error:", error);
-  //     }
-  //   }
-  //   else{
-  //     const updatedDeal = { ...deal };
-  //     updatedDeal.like -= 1;
-
-  //     try {
-  //       const response = await fetch(`/api/deals/id/${dealId}`, {
-  //         method: "PUT",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //         body: JSON.stringify({ like: updatedDeal.like }),
-  //       });
-
-  //       if (response.ok) {
-  //         alert("Cancel liked successfully!");
-  //         setDeal(updatedDeal);
-  //         setLiked(false);
-  //         setLikes(updatedDeal.like);
-  //       } else {
-  //         console.error("Error updating deal");
-  //       }
-  //     } catch (error) {
-  //       console.error("Error:", error);
-  //     }
-  //   }
-  // };
-
   const isCreator = user && user.id === deal.creatorId;
   if (user && deal.likedUsers) {
     const liked = deal.likedUsers.indexOf(user.id);
-  console.log("lllllllllllllllllaaaaaaaaaaaaa");
-  console.log("index", liked);
 }
   
 
@@ -104,15 +42,13 @@ export function DealDetail() {
         <div className="card-body">
           <h2 className="card-title">{deal.title}</h2>
           <p className="card-text">{deal.description}</p>
+          <p className="card-creator">Postby: {deal.creatorName} </p>
           <hr className="solid"></hr>
           <div className="card-btn">
           <DealLikes dealId={dealId} initialLikes={deal.like} likedUsers={   
             (user && deal.likedUsers)
           ? 
           (deal.likedUsers.indexOf(user.id)+1): false}/>
-              {/* <span onClick={handleLike} className="star-section">
-                {liked ? <span className="fa fa-star checked"></span> : <span className="fa fa-star-o unchecked"></span>}{deal.like}
-                </span> */}
               {isCreator && (
                 <>
             <Link
@@ -122,7 +58,6 @@ export function DealDetail() {
             </Link>
             <DeleteDeal dealId={dealId} />
             </>)}
-            <p>postby:{deal.creatorName} </p>
           </div>
           <Comments dealId={dealId} user={user} />
         </div>

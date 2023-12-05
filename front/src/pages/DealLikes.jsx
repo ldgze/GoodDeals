@@ -5,20 +5,13 @@ export const DealLikes = ({ dealId, initialLikes, likedUsers }) => {
     const { user } = useContext(UserContext); 
     const alreadyLiked = likedUsers;
     const [liked, setLiked] = useState(alreadyLiked); 
-    console.log(likedUsers)
-    console.log(liked)
-
     const [likes, setLikes] = useState(initialLikes);
     
-    
-  
     const handleLike = async () => {
       if (!user) {
         alert("You must be logged in to like a deal.");
         return;
       }
-
-      
 
       const newLikes = liked ? likes - 1 : likes + 1;
 
