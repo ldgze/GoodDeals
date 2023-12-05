@@ -1,5 +1,6 @@
 import React, { useContext, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { UserContext } from "../components/userContext";
 
 export function LoginPage(){
@@ -7,6 +8,8 @@ export function LoginPage(){
     const loginFormRef = useRef(null);
     const [message, setMessage] = useState("");
     const { login } = useContext(UserContext);
+
+    const navigate = useNavigate();
 
     async function onSignIn(event) {
         event.preventDefault();
@@ -29,7 +32,8 @@ export function LoginPage(){
         const userData = await res.json();
         login(userData);
         setMessage("Sign in successful!");
-        window.location.href = '/';
+        navigate('/')
+        // window.location.href = '/';
     }
 
     return (
