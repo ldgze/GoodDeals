@@ -25,7 +25,7 @@ router.post("/api/login/password", async (req, res, next) => {
             req.logIn(user, function(err) {
                 if (err) throw err;
                 console.log("in api", user);
-                return res.status(200).json(userinfo);
+                return res.status(200).json({id:userinfo._id,email:userinfo.email, username:userinfo.username});
             });
         })(req, res, next);
     } catch (error) {
@@ -49,7 +49,7 @@ router.get("/api/getUser", async (req, res) => {
     try {
         if (req.isAuthenticated() && req.user) {
             const userId = await myDB.getUserByEmail(req.user.email);
-            res.status(200).json({id:userId._id,email:req.user.email, name:userId.username});
+            res.status(200).json({id:userId._id,email:req.user.email, username:userId.username});
         }
     } catch (error) {
         res.status(500).json({ error: error.message });

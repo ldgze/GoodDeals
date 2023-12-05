@@ -30,9 +30,11 @@ export function DealDetail() {
   }
 
   const isCreator = user && user.id === deal.creatorId;
-  if (user && deal.likedUsers) {
-    const liked = deal.likedUsers.indexOf(user.id);
-}
+  console.log(user)
+  console.log(deal)
+//   if (user && deal.likedUsers) {
+//     const liked = deal.likedUsers.indexOf(user.id);
+// }
   
 
   return (
