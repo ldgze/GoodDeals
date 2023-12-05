@@ -31,7 +31,6 @@ export function LoginPage(){
         login(userData);
         setMessage("Sign in successful!");
         navigate('/')
-        // window.location.href = '/';
     }
 
     return (
