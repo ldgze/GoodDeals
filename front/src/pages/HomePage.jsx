@@ -7,8 +7,6 @@ export function HomePage() {
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(10);
 
-  // const [searchTerm, setSearchTerm] = useState("");
-
   useEffect(() => {
     async function fetchPosts() {
       try {
@@ -26,20 +24,11 @@ export function HomePage() {
 
     fetchPosts();
   }, []);
-
-  // const filteredPosts = searchTerm
-  // ? posts.filter(post =>
-  //     post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-  //     post.description.toLowerCase().includes(searchTerm.toLowerCase())
-  //   )
-  // : posts;
   
-
   const sortedPosts = posts.sort((a, b) => b.like - a.like);
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = sortedPosts.slice(indexOfFirstPost, indexOfLastPost);
-  // const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
@@ -100,13 +89,3 @@ export function HomePage() {
 }
 
 HomePage.propTypes = {};
-
-
-{/* <div className="search-box">
-  <input
-    type="text"
-    placeholder="Search deals"
-    value={searchTerm}
-    onChange={(e) => setSearchTerm(e.target.value)}
-  />
-</div> */}

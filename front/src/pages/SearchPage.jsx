@@ -45,6 +45,8 @@ export function SearchPage (){
     const indexOfFirstPost = indexOfLastPost - postsPerPage;
     const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
+    
+    const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
 
   return (
         <div>
@@ -94,7 +96,7 @@ export function SearchPage (){
               </button>
               <button
                 onClick={() => paginate(currentPage + 1)}
-                disabled={currentPage === Math.ceil(posts.length / postsPerPage)}
+                disabled={currentPage === totalPages}
                 className="next"
               >
                 Next Page
