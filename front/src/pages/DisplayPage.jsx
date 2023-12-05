@@ -52,14 +52,17 @@ export function DisplayPage({ category }) {
                 </div>
                 <div className="col-md-9 text-center">
                   <h3>{post.title}</h3>
-                  <p>Likes: {post.like}</p>
                   <p className="post-content">{post.description}</p>
+                  <p className="fa fa-star likechecked">Likes: {post.like}</p>
+                  <div>
+
                   <Link
                     to={`/deals/id/${post._id}`}
                     className="btn btn-primary btn-lg"
                   >
                     Detail Page
                   </Link>
+                  </div>
                 </div>
               </div>
             </div>

@@ -23,22 +23,6 @@ export const UserProvider = ({ children }) => {
         fetchUser();
     }, []);
 
-    // useEffect(() => {
-    //     const fetchUser = async () => {
-    //         try {
-    //             const response = await fetch("/api/getUser");
-    //             if (!response.ok) {
-    //                 throw new Error("Error getting current user");
-    //             }
-    //             const data = await response.json();
-    //             setUser(data.username);
-    //         } catch (err) {
-    //             setError(err.message);
-    //         }
-    //     };
-    //     fetchUser();
-    // }, []);
-
     const login = (userData) => {
         setUser(userData);
         alert("You have been successfully logged in!");
@@ -51,7 +35,7 @@ export const UserProvider = ({ children }) => {
                 throw new Error("Error logging out");
             }
             setUser(null);
-            localStorage.removeItem('userToken'); // Clear any client-side session data
+            localStorage.removeItem('userToken');
             alert("You have been logged out.");
         } catch (err) {
             setError(err.message);

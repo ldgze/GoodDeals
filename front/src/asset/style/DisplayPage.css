@@ -38,7 +38,7 @@
 }
 
 .post-card h3 {
-  font-size: 30px;
+  font-size: 35px;
   color: #FF69B4; /* Rose gold heading color */
   margin-bottom: 5px;
   font-weight: bold;
@@ -49,7 +49,7 @@
   color: #AD6690; /* Gold text color */
   margin: 0% 3%;
   text-align: left;
-  font-size: 24px;
+  font-size: 20px;
     /* font-family: Helvetica, Arial, sans-serif; */
 }
 
@@ -77,6 +77,11 @@
 .next {
   display: flex;
   justify-content: right;
+}
+
+.likechecked {
+  text-align: left;
+  font-size: 30px;
 }
 
 .pagination button {
