@@ -29,7 +29,7 @@
 /* Title styles */
 .card-title {
   color: #ff69b4; /* Rose gold heading color */
-  font-size: 35px;
+  font-size: 32px;
   margin-bottom: 10px;
   font-family: "Quicksand";
   font-weight: bolder;
@@ -39,17 +39,8 @@
 .card-text {
   color: #757575; 
   margin-bottom: 20px;
-  font-size: 20px;
+  font-size: 24px;
   font-family: Helvetica, Arial, sans-serif;
-}
-
-.card-creator{
-  color: #757575; 
-  margin-bottom: 10px;
-  font-size: 17px;
-  font-family: Helvetica, Arial, sans-serif;
-  margin-right: 20px;
-  text-align: right;
 }
 
 .star-section {
@@ -62,14 +53,14 @@
 
 .checked {
   color: #FFB85F;
-  margin-right: 5px;
-  font-size: 35px;
+  margin-right: 3px;
+  font-size: 20px;
 }
 
 .unchecked {
   color: #757575;
-  margin-right: 5px;
-  font-size: 35px;
+  margin-right: 3px;
+  font-size: 20px;
 }
 
 .checked:hover {
@@ -114,6 +105,7 @@
   padding: 0px;
   font-size: larger;
 }
+
 
 
 .comment-section button:hover {
@@ -168,8 +160,6 @@ form {
 }
 
 .comments {
-  color: #757575;
-  font-size: 25px;
   margin-left: 40px;
   padding: 30px 0px 10px 20px;
   box-shadow: 0 0.8em 0.8em -1em rgba(0, 0, 0, .25);

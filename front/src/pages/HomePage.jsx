@@ -24,14 +24,14 @@ export function HomePage() {
 
     fetchPosts();
   }, []);
-  
+
   const sortedPosts = posts.sort((a, b) => b.like - a.like);
+
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = sortedPosts.slice(indexOfFirstPost, indexOfLastPost);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
 
   return (
     <div>
@@ -50,8 +50,8 @@ export function HomePage() {
                 </div>
                 <div className="col-md-9 text-center">
                   <h3>{post.title}</h3>
+                  <p>Likes: {post.like}</p>
                   <p className="post-content">{post.description}</p>
-                  <p className="fa fa-star likechecked"> Likes: {post.like}</p>
                   <div className="post-meta">
                     <p className="post-category">Category: {post.category}</p>
                   </div>

@@ -10,7 +10,7 @@ export function CreateDeal() {
     weblink: "",
     imagelink: "",
     category: "",
-    like: 0,
+    like: 200,
     likedUsers: [],
     creatorId: "",
     creatorName: "",

@@ -10,11 +10,21 @@ import { LoginPage } from "./pages/LoginPage";
 import { SignUpPage } from "./pages/SignUpPage";
 import { LoginLink } from './components/LoginLink';
 import { SearchBox } from './components/SearchBox';
-import { SearchPage } from './pages/SearchPage';
+
 import "./asset/style/App.css";
 
 export default function App() {
 
+  // const [searchResults, setSearchResults] = useState([]);
+
+  // const handleSearch = async (searchTerm) => {
+  //   // Implement the search logic here
+  //   // This could be an API call or local data filtering
+  //   const results = await performSearch(searchTerm);
+  //   setSearchResults(results);
+  // };
+
+  
 
   return (
     <div>
@@ -31,7 +41,12 @@ export default function App() {
         <Link to="/createdeal" className="btn btn-primary">
           Create a Deal
         </Link>
-        <SearchBox />
+        <div className="search-box">
+            <input type="search"
+              placeholder="Search"/>
+            <button className="search-button">Search</button>
+        </div>
+        {/* <SearchBox onSearch={handleSearch} /> */}
         <LoginLink />
         </div>
           </div>
@@ -42,7 +57,6 @@ export default function App() {
 
       <Routes>
         <Route path="/" element={<HomePage category="/" />} />
-        <Route path="/search" element={<SearchPage />} />
         <Route path="/createdeal" element={<CreateDeal />} />
         <Route path={`/deals/id/:dealId`} element={<DealDetail />} />
         <Route path={`/deals/edit/id/:dealId`} element={<EditDeal />} />

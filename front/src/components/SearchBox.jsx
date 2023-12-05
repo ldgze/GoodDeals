@@ -1,35 +1,28 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
-export function SearchBox () {
+export function SearchBox ({ onSearch }) {
   const [searchTerm, setSearchTerm] = useState('');
 
-  const navigate = useNavigate();
-
   const handleSearchChange = (e) => {
-    const value = e.target.value;
-    setSearchTerm(value);
-    if (value === '') {
-      navigate('/');
-    }
+    setSearchTerm(e.target.value);
   };
 
-  const handleSearchSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    if (searchTerm) {
-      navigate(`/search?query=${encodeURIComponent(searchTerm)}`);
-    }
+    onSearch(searchTerm);
   };
 
   return (
     <div className="search-box">
-      <input 
-        type="search" 
-        placeholder="Search" 
-        value={searchTerm} 
-        onChange={handleSearchChange} 
-      />
-      <button onClick={handleSearchSubmit} className="search-button">Search</button>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="search"
+          placeholder="Search Deal"
+          value={searchTerm}
+          onChange={handleSearchChange}
+        />
+        <button type="submit" className="search-button">Search</button>
+      </form>
     </div>
   );
 };
