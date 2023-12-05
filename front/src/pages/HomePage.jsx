@@ -46,14 +46,6 @@ export function HomePage() {
 
   return (
     <div>
-{/* <div className="search-box">
-  <input
-    type="text"
-    placeholder="Search deals"
-    value={searchTerm}
-    onChange={(e) => setSearchTerm(e.target.value)}
-  />
-</div> */}
       <div className="display-page">
         <h2>Deals</h2>
         {currentPosts.map((post, index) => (
@@ -108,3 +100,13 @@ export function HomePage() {
 }
 
 HomePage.propTypes = {};
+
+
+{/* <div className="search-box">
+  <input
+    type="text"
+    placeholder="Search deals"
+    value={searchTerm}
+    onChange={(e) => setSearchTerm(e.target.value)}
+  />
+</div> */}

@@ -11,8 +11,6 @@ import { SignUpPage } from "./pages/SignUpPage";
 import { LoginLink } from './components/LoginLink';
 import { SearchBox } from './components/SearchBox';
 import { SearchPage } from './pages/SearchPage';
-
-
 import "./asset/style/App.css";
 
 export default function App() {
@@ -34,11 +32,6 @@ export default function App() {
           Create a Deal
         </Link>
         <SearchBox />
-        {/* <div className="search-box">
-            <input type="search"
-              placeholder="Search"/>
-            <button className="search-button">Search</button>
-        </div> */}
         <LoginLink />
         </div>
           </div>

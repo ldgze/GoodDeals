@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 
+import "../asset/style/SearchPage.css";
+
 export function SearchPage (){
   const [posts, setPosts] = useState([]);
   const location = useLocation();
@@ -28,7 +30,6 @@ export function SearchPage (){
         console.error("Error:", error);
       }
     }
-
     fetchPosts();
   }, []);
 
@@ -37,19 +38,20 @@ export function SearchPage (){
         post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         post.description.toLowerCase().includes(searchTerm.toLowerCase())
       )
-    : posts;
+    : [];
 
-  const sortedPosts = posts.sort((a, b) => b.like - a.like);
+    filteredPosts.sort((a, b) => b.like - a.like);
     const indexOfLastPost = currentPage * postsPerPage;
     const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+    const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
         <div>
           <div className="display-page">
             <h2>Search Results for: {searchTerm}</h2>
-            {currentPosts.map((post, index) => (
+            {currentPosts.length > 0 ? 
+            (currentPosts.map((post, index) => (
               <div className="container-fluid" key={index}>
                 <div className="post-card" key={post._id}>
                   <div className="row justify-content-center">
@@ -77,7 +79,10 @@ export function SearchPage (){
                   </div>
                 </div>
               </div>
-            ))}
+            ))
+            ) : (
+                <h3 className="searchresult">No results found.</h3>
+            )}
     
             <div className="pagination">
               <button
@@ -99,25 +104,3 @@ export function SearchPage (){
         </div>
       );
     }
-
-
-
-
-//     <div>
-//       <h2>Search Results for: {searchTerm}</h2>
-//       {filteredPosts.length > 0 ? (
-//         filteredPosts.map((post, index) => (
-//           <div key={index}>
-//             <h3>{post.title}</h3>
-//             <p>{post.description}</p>
-//             {/* Additional post details */}
-//           </div>
-//         ))
-//       ) : (
-//         <p>No results found.</p>
-//       )}
-//     </div>
-//   );
-// };
-
-{/* <h2>Search Results for: {searchTerm}</h2> */}
