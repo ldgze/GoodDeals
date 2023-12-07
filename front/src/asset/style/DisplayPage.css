@@ -18,6 +18,7 @@
   margin: 10px;
 }
 
+/* Make .post-card-img responsive to prevent overlap with text on window resize */
 .post-card-img {
   max-width: 400px;
 }
