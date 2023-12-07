@@ -45,6 +45,7 @@ nav ul li:first-child a {
 }
 
 /* Style for the search box */
+/* There isn't a search box in the navigation bar yet, will it be added? */
 .search-box {
   display: flex;
 }
